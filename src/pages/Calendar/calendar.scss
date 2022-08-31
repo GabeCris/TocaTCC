@@ -1,0 +1,91 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.react-calendar {
+    border: none;
+    border-radius: 10px;
+    &__navigation {
+        @include centralize;
+        padding: 10px;
+        background-color: $primary-color;
+        border-radius: 10px 10px 0 0;
+        button {
+            min-width: 0;
+        }
+        &__arrow {
+            @include centralize;
+            font-size: 30px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: $white-color !important;
+            color: $primary-color;
+            &:hover {
+                background-color: $primary-color;
+            }
+        }
+        &__label__labelText {
+            @include text($size: 18px, $weight: 700, $color: $white-color);
+        }
+    }
+    &__tile {
+        @include text($size: 14px, $weight: 700, $color: #BDBDBD);
+        width: 36px;
+        @include centralize;
+        height: 36px;
+        padding: 0;
+        &--now {
+            background-color: $primary-color !important;
+            color: $white-color !important;
+            border-radius: 10px;
+        }
+        &--range {
+            background: none;
+            border: 3px solid $primary-color !important;
+            border-radius: 10px;
+            color: $primary-color
+        }
+        &:enabled:hover,
+        &:enabled:focus {
+            background: none;
+            border: 3px solid $primary-color;
+            border-radius: 10px;
+            color: $primary-color;
+        }
+    }
+    &__month-view__weekdays {
+        @include text($size: 16px, $weight: 700, $color: $dark-gray-color);
+        &__weekday {
+            transform: translateX(10px);
+            visibility: hidden;
+        }
+        &__weekday::first-letter {
+            visibility: visible;
+        }
+    }
+}
+
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+    display: none;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background-color: $primary-color;
+}
+
+.title-date {
+    margin: 16px 0;
+    @include text($color: $dark-gray-color, $size: 18px);
+}
+
+.cards-container{
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+     height: 166px;
+     width: 100%;
+     .card-container{
+        scroll-snap-align: start;
+     }
+}

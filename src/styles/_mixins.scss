@@ -1,0 +1,12 @@
+@mixin centralize ($justify: center, $align: center, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin text($color: $primary-color, $size: 12px, $weight: bold) {
+    font-size: $size;
+    color: $color;
+    font-weight: $weight;
+}

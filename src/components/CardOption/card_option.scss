@@ -1,0 +1,31 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.card {
+    &-option {
+        @include centralize($direction: column);
+        gap: 8px;
+        input{
+            display: none;
+        }
+    }
+    &-image {
+        width: 76px;
+        height: 76px;
+        background-color: $white-color;
+        border-radius: 10px;
+        @include centralize;
+        img {
+            height: 40px;
+        }
+    }
+    &-text {
+        @include text($dark-gray-color, 14px, 500);
+    }
+}
+.selected {
+    background-color: $primary-color;
+    img {
+        filter: brightness(100);
+    }
+}

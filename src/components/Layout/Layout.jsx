@@ -9,7 +9,7 @@ const Layout = ({ children, title }) => {
             <section className="appbar">
                 <h1 className="title">{title}</h1>
                 <Link to="/">
-                    <img src="./assets/icons/logo.svg" />
+                    <img src="../assets/icons/logo.svg" />
                 </Link>
             </section>
             <main className="content">{children}</main>

@@ -10,3 +10,14 @@
     color: $color;
     font-weight: $weight;
 }
+
+@mixin input($width: 100%, $height: 55px){
+    width: $width;
+    height: $height;
+    background-color: $white-color;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding-left: 32px;
+    @include text($dark-gray-color, 18px, 500);
+}

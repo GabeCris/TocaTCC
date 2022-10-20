@@ -1,0 +1,16 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.type-container{
+    .type-input{
+        @include centralize;
+        gap: 16px;
+        label{
+            @include text(
+                $color: $gray-color,
+                $size: 14px,
+                $weight: 500
+            )
+        }
+    }
+}

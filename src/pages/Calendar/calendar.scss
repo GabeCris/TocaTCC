@@ -81,6 +81,7 @@
 }
 
 .cards-container{
+    border-radius: 10px;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
      height: 166px;
@@ -88,4 +89,6 @@
      .card-container{
         scroll-snap-align: start;
      }
-}
+    }
+    
+   

@@ -1,0 +1,11 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.details-container {
+    a {
+        margin-top: 26px;
+        font-weight: 500;
+        font-size: 18px;
+        color: $dark-gray-color;
+    }
+}

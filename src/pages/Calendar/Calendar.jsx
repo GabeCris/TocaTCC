@@ -23,8 +23,7 @@ const Calendar = () => {
         "Dezembro",
     ];
 
-    const teste = [1,2,3,4,5,6,7,8,1,1,1,1,1]
-
+    const teste = [1]
 
     return (
         <Layout title="Calendário">
@@ -41,12 +40,12 @@ const Calendar = () => {
                 teste.map((item, index) => (
                   <CardEvent
                       index={index+1}
-                      event={"futebol"}
+                      event={"soccer"}
                       title={"Futebol"}
                       date={25}
-                      initial_time={5}
-                      end_time={6}
-                      people={12}
+                      start={5}
+                      end={6}
+                      amount={15}
                   />
                 ))
               }

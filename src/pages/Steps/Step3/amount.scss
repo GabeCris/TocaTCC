@@ -1,0 +1,76 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.input-amount {
+    @include centralize($direction: column);
+    gap: 16px;
+    .input-value {
+        @include text($dark-gray-color, 14px, 500);
+    }
+
+    input[type="range"] {
+        @include centralize;
+        position: relative;
+        -webkit-appearance: none;
+        width: 225px;
+        border-radius: 10px;
+
+        &::before {
+            content: "1";
+            position: absolute;
+            left: -16px;
+            @include text($dark-gray-color, 16px, 700);
+        }
+        &::after {
+            content: "20+";
+            position: absolute;
+            right: -36px;
+            @include text($dark-gray-color, 16px, 700);
+        }
+    }
+    input[type="range"]:focus {
+        outline: none;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        background: $white-color;
+        border-radius: 5px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+        height: 24px;
+        width: 24px;
+        border-radius: 50px;
+        background: $primary-color;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -7px;
+    }
+    input[type="range"]:focus::-webkit-slider-runnable-track {
+        background: $white-color;
+    }
+}
+
+.type-input {
+    margin: 48px 0 32px 0;
+    @include centralize($direction: column, $align: flex-start);
+    gap: 32px;
+    label {
+        @include text($dark-gray-color, 18px, 500);
+        @include centralize;
+        gap: 6px;
+        input {
+            display: none;
+            &:checked + span {
+                background-color: $primary-color;
+            }
+        }
+        span {
+            background-color: $white-color;
+            border-radius: 2px;
+            width: 12px;
+            height: 12px;
+        }
+    }
+}

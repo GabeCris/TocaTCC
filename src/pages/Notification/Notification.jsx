@@ -3,7 +3,7 @@ import Layout from '../../components/Layout/Layout'
 
 const Notification = () => {
   return (
-    <Layout title="Notificações">Notificações</Layout>
+    <Layout title="Notificações">Ainda não funciona :(</Layout>
   )
 }
 

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 @import '../styles/mixins';
+@import '../styles/variables';
 
 *{
     margin: 0;
@@ -7,6 +8,7 @@
     box-sizing: border-box;
     list-style-type: none;
     text-decoration: none;
+    user-select: none;
     font-family: 'DM Sans', sans-serif;
 }
 
@@ -22,4 +24,24 @@ a{
 .App{
     width: 100%;
     height: 100vh;
+}
+
+.section-title{
+    @include text($dark-gray-color, 24px, 700);
+    margin-bottom: 32px;
+}
+
+.step-container{
+    @include centralize($direction: column);
+}
+
+.label-input{
+    width: 100%;
+    position: relative;
+    .span-input {
+        position: absolute;
+        left: 16px;
+        top: -10px;
+        @include text($gray-color, 14px, 500);
+    }
 }

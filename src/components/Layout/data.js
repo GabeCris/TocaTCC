@@ -1,27 +1,29 @@
+const path = '../assets/icons'
+
 const data = [
     {
         route: "/",
-        path: "./assets/icons/home.svg",
+        path: `${path}/home.svg`,
         text: "Home",
     },
     {
         route: "/calendar",
-        path: "./assets/icons/calendar.svg",
+        path: `${path}/calendar.svg`,
         text: "Calendário",
     },
     {
-        route: "/scheduling",
-        path: "./assets/icons/add.svg",
+        route: "/scheduling/step1",
+        path: `${path}/add.svg`,
         text: "Agendamento",
     },
     {
         route: "/notification",
-        path: "./assets/icons/notification.svg",
+        path: `${path}/notification.svg`,
         text: "Notificações",
     },
     {
         route: "/settings",
-        path: "./assets/icons/settings.svg",
+        path: `${path}/settings.svg`,
         text: "Configurações",
     },
 ];

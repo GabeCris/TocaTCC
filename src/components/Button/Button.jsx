@@ -1,9 +1,9 @@
 import React from 'react';
 import './button.scss';
 
-const Button = ({children}) => {
+const Button = ({children, status=true, change}) => {
   return (
-    <button className='button'>{children}</button>
+    <button onClick={change} disabled={status} className={`button ${!status && 'inactive-button'}`}>{children}</button>
   )
 }
 

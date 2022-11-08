@@ -17,7 +17,7 @@
         gap: 20px;
         .card-image_container {
             height: 60px;
-            width: 60px;
+            min-width: 60px;
             @include centralize;
             background-color: $primary-color;
             border-radius: 10px;

@@ -10,6 +10,7 @@ import Amount from "./pages/Steps/Step3/Amount";
 import Description from "./pages/Steps/Step5/Description";
 import Details from "./pages/Details/Details";
 import DateTime from "./pages/Steps/Step4/DateTime";
+import Finish from "./pages/Steps/Step6/Finish";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                         <Route path="step3" element={<Amount />} />
                         <Route path="step4" element={<DateTime />} />
                         <Route path="step5" element={<Description />} />
+                        <Route path="step6" element={<Finish />} />
                     </Route>
                     <Route path="/notification" element={<Notification />} />
                     <Route path="/settings" element={<Settings />} />

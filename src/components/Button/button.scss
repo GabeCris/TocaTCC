@@ -19,4 +19,7 @@
             @include text($white-color, 24px)
         }
     }
+    .inactive-button{
+        opacity: 30%;
+    }
 }

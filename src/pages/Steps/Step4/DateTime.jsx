@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { Reservation } from "../../../contexts/Reservation";
 
 const DateTime = () => {
-    const [dateSelected, setDateSelected] = useState();
+    const [dateSelected, setDateSelected] = useState('2022-11-3');
     const { setReservationList, reservationList } = useContext(Reservation);
 
     let date = new Date();
@@ -16,7 +16,9 @@ const DateTime = () => {
 
     useEffect(() => {
         setDateSelected(dataFormatada);
+        setReservationList({ ...reservationList, date: dataFormatada });
     }, []);
+    console.log(dateSelected);
 
     const changeDate = (e) => {
         const option = e.target.value;

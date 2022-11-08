@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SecondaryButton from "../../../components/SecondaryButton/SecondaryButton";
 import Button from "../../../components/Button/Button";
 import { Link } from "react-router-dom";
@@ -12,15 +12,29 @@ import "./type.scss";
 const Type = () => {
     const { setReservationList, reservationList } = useContext(Reservation);
     const [selected, setSelected] = useState("court");
-    const [typeResponsible, setTypeResponsible] = useState(reservationList.responsible_type);
-    const [responsibleName, setResponsibleName] = useState(reservationList.responsible);
+    const [inputNull, setInputNull] = useState(false)
+    const [typeResponsible, setTypeResponsible] = useState(
+        reservationList.responsible_type
+    );
+    const [responsibleName, setResponsibleName] = useState(
+        reservationList.responsible
+    );
+
+    const [buttonActive, setButtonActive] = useState(false);
+
+    useEffect(() => {
+        setButtonActive(responsibleName ? true : false);
+    });
 
     const changeResponsibleName = (e) => {
         const option = e.target.value;
-        setResponsibleName(option);
+        option === '' ? setInputNull(true) : setInputNull(false) 
+        console.log("O INPUT ESTÁ "+inputNull)
+        const textRefactor = option.replace(/[\d]/g, "");
+        setResponsibleName(textRefactor);
         setReservationList({ ...reservationList, responsible: option });
     };
-    
+
     const changeTypeResponsible = (e) => {
         const option = e.target.id;
         setTypeResponsible(option);
@@ -46,32 +60,59 @@ const Type = () => {
                     ></CardOption>
                 ))}
             </div>
-            <InputText
-                classname="input-responsable"
-                placeholder="Nome do responsável"
-                change={changeResponsibleName}
-                value={responsibleName}
-            />
-             <div className="type-input">
+            <label className="label-input">
+                <InputText
+                    classname="input-responsable"
+                    placeholder="Nome do responsável"
+                    change={changeResponsibleName}
+                    value={responsibleName}
+                    maxLength={20}
+                    inputNull={inputNull}
+                />
+                {responsibleName && (
+                    <span style={{transition: '2s'}} className="span-input">Responsável</span>
+                )}
+            </label>
+            <div className="type-input">
                 <label>
-                    <input type="radio" name="type" id="student" onClick={changeTypeResponsible} checked={typeResponsible === 'student' ? true : false}/>
+                    <input
+                        type="radio"
+                        name="type"
+                        id="student"
+                        onClick={changeTypeResponsible}
+                        checked={typeResponsible === "student" ? true : false}
+                    />
                     <span></span>
                     Aluno
                 </label>
                 <label>
-                    <input type="radio" name="type" id="server" onClick={changeTypeResponsible} checked={typeResponsible === 'server' ? true : false}/>
+                    <input
+                        type="radio"
+                        name="type"
+                        id="server"
+                        onClick={changeTypeResponsible}
+                        checked={typeResponsible === "server" ? true : false}
+                    />
                     <span></span>
                     Servidor
                 </label>
                 <label>
-                    <input type="radio" name="type" id="guest" onClick={changeTypeResponsible} checked={typeResponsible === 'guest' ? true : false}/>
+                    <input
+                        type="radio"
+                        name="type"
+                        id="guest"
+                        onClick={changeTypeResponsible}
+                        checked={typeResponsible === "guest" ? true : false}
+                    />
                     <span></span>
                     Convidado
                 </label>
             </div>
             <section className="buttons-container">
-                <Button>
-                    <Link to="/scheduling/step2">Próximo</Link>
+                <Button status={buttonActive}>
+                    <Link to={buttonActive && "/scheduling/step2"}>
+                        Próximo
+                    </Link>
                 </Button>
                 <SecondaryButton>
                     <Link to="/">Sair</Link>

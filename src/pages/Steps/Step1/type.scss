@@ -5,6 +5,7 @@
     .type-input{
         @include centralize;
         gap: 16px;
+        z-index: 10;
         label{
             @include text(
                 $color: $gray-color,

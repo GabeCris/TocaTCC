@@ -11,13 +11,13 @@ const ContextProvider = ({ children }) => {
         amount: 10,
         participants: "students",
         responsible_type: "student",
-        description: "",
-        title: "",
-        date: "",
+        description: "Jogo de fute da galerinha",
+        title: "Futebol de Info19",
+        date: "05/04",
         start: "11",
         end: "12",
-        responsible: "",
-        amount_type: "",
+        responsible: "Gabriel Crisanto",
+        amount_type: "students",
     });
     return (
         <Reservation.Provider value={{ reservationList, setReservationList }}>

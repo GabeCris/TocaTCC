@@ -35,7 +35,8 @@ a{
     @include centralize($direction: column);
 }
 
-.label-input{
+.label-input,
+.select-input{
     width: 100%;
     position: relative;
     .span-input {

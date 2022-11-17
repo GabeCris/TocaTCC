@@ -1,11 +1,11 @@
 
-const path = '../assets/options/step2'
+const path = '../../assets/options/step2'
 
 const options = [
     {
-        path: `${path}/handball.svg`,
-        text: 'Handebol',
-        value: 'handball'
+        path: `${path}/soccer.svg`,
+        text: 'Futebol',
+        value: 'soccer'
     },
     {
         path: `${path}/volleyball.svg`,
@@ -18,9 +18,9 @@ const options = [
         value: 'basketball'
     },
     {
-        path: `${path}/soccer.svg`,
-        text: 'Futebol',
-        value: 'soccer'
+        path: `${path}/handball.svg`,
+        text: 'Handebol',
+        value: 'handball'
     },
     {
         path: `${path}/activity.svg`,

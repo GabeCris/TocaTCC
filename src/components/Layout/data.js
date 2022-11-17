@@ -1,4 +1,4 @@
-const path = '../assets/icons'
+const path = '../../assets/icons'
 
 const data = [
     {

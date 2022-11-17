@@ -7,21 +7,21 @@ import "./amount.scss";
 
 const Amount = () => {
 
-    const { setReservationList, reservationList } = useContext(Reservation);
+    const { setReservationListCourt, reservationListCourt } = useContext(Reservation);
 
-    const [selected, setSelected] = useState(reservationList.participants);
-    const [amount, setAmount] = useState(reservationList.amount);
+    const [selected, setSelected] = useState(reservationListCourt.participants);
+    const [amount, setAmount] = useState(reservationListCourt.amount);
 
     const changeOption = (e) => {
         const option = e.target.id;
         setSelected(option);
-        setReservationList({ ...reservationList, participants: option });
+        setReservationListCourt({ ...reservationListCourt, participants: option });
     };
 
     const changeAmount = (e) =>{
         const value = e.target.value;
         setAmount(value);
-        setReservationList({...reservationList, amount: value})
+        setReservationListCourt({...reservationListCourt, amount: value})
     }
 
 
@@ -59,10 +59,10 @@ const Amount = () => {
             </div>
             <section className="buttons-container">
                 <Button>
-                    <Link to="/scheduling/step4">Próximo</Link>
+                    <Link to="/scheduling/court/step4">Próximo</Link>
                 </Button>
                 <SecondaryButton>
-                    <Link to="/scheduling/step2">Voltar</Link>
+                    <Link to="/scheduling/court/step2">Voltar</Link>
                 </SecondaryButton>
             </section>
         </div>

@@ -10,14 +10,14 @@ import InputText from "../../../components/InputText/InputText";
 import "./type.scss";
 
 const Type = () => {
-    const { setReservationList, reservationList } = useContext(Reservation);
+    const { setReservationListCourt, reservationListCourt, setTypeReservation } = useContext(Reservation);
     const [selected, setSelected] = useState("court");
     const [inputNull, setInputNull] = useState(false)
     const [typeResponsible, setTypeResponsible] = useState(
-        reservationList.responsible_type
+        reservationListCourt.responsible_type
     );
     const [responsibleName, setResponsibleName] = useState(
-        reservationList.responsible
+        reservationListCourt.responsible
     );
 
     const [buttonActive, setButtonActive] = useState(false);
@@ -32,19 +32,20 @@ const Type = () => {
         console.log("O INPUT ESTÁ "+inputNull)
         const textRefactor = option.replace(/[\d]/g, "");
         setResponsibleName(textRefactor);
-        setReservationList({ ...reservationList, responsible: option });
+        setReservationListCourt({ ...reservationListCourt, responsible: option });
     };
 
     const changeTypeResponsible = (e) => {
         const option = e.target.id;
         setTypeResponsible(option);
-        setReservationList({ ...reservationList, responsible_type: option });
+        setReservationListCourt({ ...reservationListCourt, responsible_type: option });
     };
 
     const changeOption = (e) => {
         const option = e.target.value;
         setSelected(option);
-        setReservationList({ ...reservationList, type: option });
+        setTypeReservation(option);
+        setReservationListCourt({ ...reservationListCourt, type: option });
     };
     return (
         <section className="step-container type-container">
@@ -70,7 +71,7 @@ const Type = () => {
                     inputNull={inputNull}
                 />
                 {responsibleName && (
-                    <span style={{transition: '2s'}} className="span-input">Responsável</span>
+                    <span className="span-input">Responsável</span>
                 )}
             </label>
             <div className="type-input">
@@ -110,7 +111,9 @@ const Type = () => {
             </div>
             <section className="buttons-container">
                 <Button status={buttonActive}>
-                    <Link to={buttonActive && "/scheduling/step2"}>
+                    <Link to={buttonActive && 
+                        (reservationListCourt.type == 'court' ? 
+                        "/scheduling/court/step2" : "/scheduling/material/step2")}>
                         Próximo
                     </Link>
                 </Button>

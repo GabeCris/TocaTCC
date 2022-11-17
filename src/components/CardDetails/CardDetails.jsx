@@ -32,7 +32,7 @@ const CardDetails = ({ id }) => {
             <nav className="card-nav">
                 <div className="card-nav_item">
                     <img src="../assets/events/details/calendar.svg" alt="" />
-                    <p className="card-nav_text">{data.date}/10/2022</p>
+                    <p className="card-nav_text">{data.date}</p>
                 </div>
                 <div className="card-nav_item">
                     <img src="../assets/events/details/time.svg" alt="" />

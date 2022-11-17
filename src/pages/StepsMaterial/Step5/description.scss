@@ -1,0 +1,18 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.inputs-container{
+    width: 100%;
+    @include centralize($direction: column);
+    gap: 24px;
+}
+
+.input-description{
+    @include input();
+    padding: 15px 32px 15px 32px;
+    height: 145px;
+    resize: none;
+    &::placeholder{
+        opacity: 50%;
+    }
+}

@@ -1,0 +1,80 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.date-container{
+    gap: 22px;
+}
+.date-input {
+    position: relative;
+    @include centralize;
+    width: 224px !important;
+    input {
+        background-color: $white-color;
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        @include text($dark-gray-color, 20px, 500);
+        padding: 0 20px;
+        height: 55px;
+        position: relative;
+    }
+}
+
+.select {
+    &-container {
+        @include text($dark-gray-color, 22px, 500);
+        @include centralize;
+        width: 70px;
+        height: 50px;
+        position: relative;
+    }
+    &-wrapper,
+    &-input {
+        border-radius: 10px;
+        @include centralize;
+        background-color: $white-color;
+    }
+    &-wrapper {
+        overflow-y: scroll;
+        max-height: 175px;
+        z-index: 10;
+        top: 60px;
+        width: 100%;
+        position: absolute;
+        justify-content: flex-start;
+        scroll-snap-type: y mandatory;
+        flex-direction: column;
+        span {
+            border-radius: 10px;
+            min-height: calc(175px / 3);
+            scroll-snap-align: start;
+            width: 100%;
+            @include centralize;
+            text-align: center;
+        }
+    }
+    &-active {
+        background-color: $primary-color;
+        border: 3px solid white;
+        color: $white-color;
+    }
+    &-input {
+        height: 55px;
+        .span-input {
+            left: auto !important;
+        }
+    }
+}
+
+.time-container {
+    @include centralize;
+    gap: 20px;
+    > span {
+        @include text($dark-gray-color, 28px, 500);
+    }
+}
+
+.error{
+    color: red;
+}

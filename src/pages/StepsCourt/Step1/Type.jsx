@@ -10,8 +10,8 @@ import InputText from "../../../components/InputText/InputText";
 import "./type.scss";
 
 const Type = () => {
-    const { setReservationListCourt, reservationListCourt, setTypeReservation } = useContext(Reservation);
-    const [selected, setSelected] = useState("court");
+    const { setReservationListCourt, reservationListCourt, setTypeReservation , typeReservation} = useContext(Reservation);
+    const [selected, setSelected] = useState(typeReservation);
     const [inputNull, setInputNull] = useState(false)
     const [typeResponsible, setTypeResponsible] = useState(
         reservationListCourt.responsible_type

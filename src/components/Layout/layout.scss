@@ -35,6 +35,9 @@
         &:has(.step-container_finish){
             height: calc(100vh - 100px - 104px);
         }
+        &:has(.login_content){
+            height: calc(100vh - 163px);
+        }
     }
     .navbar {
         background-color: $white-color;

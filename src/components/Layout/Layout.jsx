@@ -6,29 +6,46 @@ import { useLocation } from "react-router-dom";
 
 const Layout = ({ children, title }) => {
     const location = useLocation();
+
+    const appBar = () => {
+        switch (location.pathname) {
+            case "/scheduling/step6":
+                return (
+                    <section className="appbar_finish">
+                        <img src="../assets/icons/logo-full.svg" />
+                    </section>
+                );
+            case "/login":
+                return (
+                    <section className="appbar_finish">
+                        <img src="../assets/icons/logo-letters.svg" />
+                    </section>
+                );
+            default:
+                return (
+                    <section className="appbar">
+                        <h1 className="title">{title}</h1>
+                        <Link to="/">
+                            <img src="../assets/icons/logo.svg" />
+                        </Link>
+                    </section>
+                );
+        }
+    };
     return (
         <section className="layout-container">
-            {location.pathname === "/scheduling/step6" ? (
-                <section className="appbar_finish">
-                    <img src="../assets/icons/logo-full.svg" />
-                </section>
-            ) : (
-                <section className="appbar">
-                    <h1 className="title">{title}</h1>
-                    <Link to="/">
-                        <img src="../assets/icons/logo.svg" />
-                    </Link>
-                </section>
-            )}
+            {appBar()}
             <main className="content">{children}</main>
-            <nav className="navbar">
-                {Data.map((item) => (
-                    <NavLink to={item.route} className="navlink">
-                        <img src={item.path} className="image" />
-                        <p className="text">{item.text}</p>
-                    </NavLink>
-                ))}
-            </nav>
+            {location.pathname != "/login" && (
+                <nav className="navbar">
+                    {Data.map((item) => (
+                        <NavLink to={item.route} className="navlink">
+                            <img src={item.path} className="image" />
+                            <p className="text">{item.text}</p>
+                        </NavLink>
+                    ))}
+                </nav>
+            )}
         </section>
     );
 };

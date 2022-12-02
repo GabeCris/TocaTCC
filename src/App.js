@@ -17,6 +17,7 @@ import AmountMaterial from './pages/StepsMaterial/Step3/AmountMaterial';
 import DateTimeMaterial from './pages/StepsMaterial/Step4/DateTimeMaterial';
 import DescriptionMaterial from './pages/StepsMaterial/Step5/DescriptionMaterial';
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home /> } />
                     <Route path="/login" element={<Login /> } />
+                    <Route path="/register" element={<Register /> } />
                     <Route path="/details/:id" element={<Details />} />
                     <Route path="/calendar" element={<Calendar />} />
                     <Route path="/scheduling" element={<Scheduling />}>

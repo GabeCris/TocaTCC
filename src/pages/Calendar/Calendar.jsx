@@ -8,6 +8,8 @@ import "./calendar.scss";
 
 const Calendar = () => {
     const [date, setDate] = useState(new Date());
+    let dataFormatada =
+        date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     const monthNames = [
         "Janeiro",
         "Fevereiro",
@@ -42,7 +44,7 @@ const Calendar = () => {
                       index={index+1}
                       event={"soccer"}
                       title={"Futebol"}
-                      date={25}
+                      date={dataFormatada}
                       start={5}
                       end={6}
                       amount={15}

@@ -1,0 +1,13 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.input-container {
+    @include centralize($direction: column);
+    gap: 16px;
+}
+
+.buttons-login{
+    padding: 0;
+    position: relative;
+    bottom: 0;
+}

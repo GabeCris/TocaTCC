@@ -1,26 +1,26 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import InputText from "../../components/InputText/InputText";
-import "./login.scss";
+import "./register.scss";
 import Button from "../../components/Button/Button";
 import SecondaryButton from "../../components/SecondaryButton/SecondaryButton";
 import { Link } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../config/firebase";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [signInWithEmailAndPassword, user, loading, error] =
-        useSignInWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, error] =
+        useCreateUserWithEmailAndPassword(auth);
 
     const handleSignIn = () => {
-        signInWithEmailAndPassword(email, password);
+        createUserWithEmailAndPassword(email, password);
     };
     return (
         <Layout title="Home">
             <section className="login_content">
-                <h1 className="section-title">Login</h1>
+                <h1 className="section-title">Cadastro</h1>
                 <div className="input-container">
                     <InputText
                         placeholder={"Informe seu email"}
@@ -34,15 +34,14 @@ const Login = () => {
             </section>
             <section className="buttons-container buttons-login">
                 <Button change={handleSignIn} status={false}>
-                    Teste
-                    {/* <Link to="/">Entrar</Link> */}
+                    <Link to="/login">Cadastrar</Link>
                 </Button>
                 <SecondaryButton>
-                    <Link to="/register">Cadastrar-se</Link>
+                    <Link to="/login">Voltar</Link>
                 </SecondaryButton>
             </section>
         </Layout>
     );
 };
 
-export default Login;
+export default Register;

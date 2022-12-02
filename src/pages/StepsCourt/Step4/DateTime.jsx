@@ -11,7 +11,8 @@ import { initialMinute, initialHour, endHour, endMinute } from "./timeList";
 
 const DateTime = () => {
     const [dateSelected, setDateSelected] = useState("2022-11-3");
-    const { setReservationListCourt, reservationListCourt } = useContext(Reservation);
+    const { setReservationListCourt, reservationListCourt } =
+        useContext(Reservation);
     const [status, setStatus] = useState(true);
 
     let date = new Date();
@@ -20,7 +21,10 @@ const DateTime = () => {
 
     useEffect(() => {
         setDateSelected(dataFormatada);
-        setReservationListCourt({ ...reservationListCourt, date: dataFormatada });
+        setReservationListCourt({
+            ...reservationListCourt,
+            date: dataFormatada,
+        });
     }, []);
 
     useEffect(() => {
@@ -29,7 +33,6 @@ const DateTime = () => {
 
     const changeDate = (e) => {
         const option = e.target.value;
-        console.log(option);
         setDateSelected(option);
         setReservationListCourt({ ...reservationListCourt, date: option });
     };
@@ -47,10 +50,14 @@ const DateTime = () => {
             reservationListCourt.initialMinute == reservationListCourt.endMinute
         ) {
             setStatus(false);
-        } else if (reservationListCourt.initialHour + 2 < reservationListCourt.endHour) {
+        } else if (
+            reservationListCourt.initialHour + 2 <
+            reservationListCourt.endHour
+        ) {
             setStatus(false);
         } else if (
-            reservationListCourt.initialHour + 2 == reservationListCourt.endHour &&
+            reservationListCourt.initialHour + 2 ==
+                reservationListCourt.endHour &&
             reservationListCourt.endMinute == 30
         ) {
             setStatus(false);
@@ -87,7 +94,9 @@ const DateTime = () => {
             {!status && <span className="error">*Horário inválido</span>}
             <section className="buttons-container">
                 <Button status={status}>
-                    <Link to={status && "/scheduling/court/step5"}>Próximo</Link>
+                    <Link to={status && "/scheduling/court/step5"}>
+                        Próximo
+                    </Link>
                 </Button>
                 <SecondaryButton>
                     <Link to="/scheduling/court/step3">Voltar</Link>

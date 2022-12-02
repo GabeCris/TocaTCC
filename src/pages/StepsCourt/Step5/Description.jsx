@@ -17,12 +17,10 @@ const Description = () => {
         setButtonActive(
             reservationListCourt.title && reservationListCourt.description ? true : false
         );
-        console.log(buttonActive);
     });
 
     const changeOption = (e, type) => {
         const option = e.target.value;
-        console.log(option);
         if (type === "title")
             setReservationListCourt({ ...reservationListCourt, title: option });
         else if (type === "desc")

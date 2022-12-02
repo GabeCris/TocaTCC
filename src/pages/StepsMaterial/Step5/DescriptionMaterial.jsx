@@ -17,12 +17,10 @@ const Description = () => {
         setButtonActive(
             reservationListMaterial.title && reservationListMaterial.description ? true : false
         );
-        console.log(buttonActive);
     });
 
     const changeOption = (e, type) => {
         const option = e.target.value;
-        console.log(option);
         if (type === "title")
             setReservationListMaterial({ ...reservationListMaterial, title: option });
         else if (type === "desc")

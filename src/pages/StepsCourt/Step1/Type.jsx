@@ -29,7 +29,6 @@ const Type = () => {
     const changeResponsibleName = (e) => {
         const option = e.target.value;
         option === '' ? setInputNull(true) : setInputNull(false) 
-        console.log("O INPUT ESTÁ "+inputNull)
         const textRefactor = option.replace(/[\d]/g, "");
         setResponsibleName(textRefactor);
         setReservationListCourt({ ...reservationListCourt, responsible: option });

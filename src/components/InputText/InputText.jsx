@@ -2,7 +2,7 @@ import React from "react";
 import "./input-text.scss";
 
 const InputText = ({
-    type,
+    type = "text",
     classname,
     placeholder,
     change,
@@ -13,7 +13,7 @@ const InputText = ({
     return (
         <>
             <input
-                type={type ? type : "text"}
+                type={type}
                 value={value}
                 onChange={change}
                 className={`input ${classname} ${inputNull ? "inputNull" : ''}`}

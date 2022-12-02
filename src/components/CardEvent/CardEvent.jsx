@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 const CardEvent = ({ event, title, date, start, end, amount, index, id }) => {
     
-    const formatedDate = date?.split("-").reverse().splice(0,2).join('/');
-    console.log(formatedDate)
+    const formatedDate = date?.split("-")?.reverse()?.splice(0,2)?.join('/');
 
     return (
         <section className="card-container">

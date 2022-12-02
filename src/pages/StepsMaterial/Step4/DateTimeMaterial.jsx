@@ -29,7 +29,6 @@ const DateTime = () => {
 
     const changeDate = (e) => {
         const option = e.target.value;
-        console.log(option);
         setDateSelected(option);
         setReservationListMaterial({ ...reservationListMaterial, date: option });
     };

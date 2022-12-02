@@ -4,6 +4,19 @@ import { NavLink, Link } from "react-router-dom";
 import Data from "./data";
 import { useLocation } from "react-router-dom";
 
+const SignLogin = () => {
+    return (
+        <nav className="navbar">
+            {Data.map((item) => (
+                <NavLink to={item.route} className="navlink">
+                    <img src={item.path} className="image" />
+                    <p className="text">{item.text}</p>
+                </NavLink>
+            ))}
+        </nav>
+    );
+};
+
 const Layout = ({ children, title }) => {
     const location = useLocation();
 
@@ -16,6 +29,7 @@ const Layout = ({ children, title }) => {
                     </section>
                 );
             case "/login":
+            case "/register":
                 return (
                     <section className="appbar_finish">
                         <img src="../assets/icons/logo-letters.svg" />
@@ -36,16 +50,8 @@ const Layout = ({ children, title }) => {
         <section className="layout-container">
             {appBar()}
             <main className="content">{children}</main>
-            {location.pathname != "/login" && (
-                <nav className="navbar">
-                    {Data.map((item) => (
-                        <NavLink to={item.route} className="navlink">
-                            <img src={item.path} className="image" />
-                            <p className="text">{item.text}</p>
-                        </NavLink>
-                    ))}
-                </nav>
-            )}
+            {location.pathname != "/login" &&
+                location.pathname != "/register" && <SignLogin />}
         </section>
     );
 };

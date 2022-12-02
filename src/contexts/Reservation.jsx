@@ -4,6 +4,7 @@ import { useState } from "react";
 export const Reservation = createContext({});
 
 const ContextProvider = ({ children }) => {
+    const [filterSelect, setFilterSelect] = useState('')
     const [typeReservation, setTypeReservation] = useState("court");
     const [reservationListCourt, setReservationListCourt] = useState({
         icon: "soccer",
@@ -43,6 +44,8 @@ const ContextProvider = ({ children }) => {
     return (
         <Reservation.Provider
             value={{
+                filterSelect, 
+                setFilterSelect,
                 reservationListCourt,
                 setReservationListCourt,
                 reservationListMaterial,

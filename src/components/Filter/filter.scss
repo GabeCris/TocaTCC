@@ -1,0 +1,83 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.filter-container {
+    background-color: $light-gray-color;
+    z-index: 10;
+    width: 100vw;
+    transform: translate(-20px, -32px);
+    position: fixed;
+    border-radius: 30px 30px 0 0;
+    padding: 20px;
+    @include centralize(space-between);
+    padding-bottom: 10px;
+    .filter-button {
+        width: 144px;
+        height: 44px;
+        border-radius: 10px;
+        background-color: $white-color;
+        @include centralize;
+        gap: 12px;
+        @include text(#184e77, 18px, 500);
+    }
+}
+
+.filter {
+    &-content {
+        @include centralize(flex-end);
+        gap: 12px;
+    }
+    &-month {
+        margin-left: 16px;
+        font-weight: 700;
+        color: $dark-gray-color;
+        font-size: 18px;
+    }
+    &-wrapper {
+        border-radius: 10px;
+        @include centralize;
+        background-color: $white-color;
+        overflow-y: scroll;
+        max-height: 175px;
+        z-index: 10;
+        top: 70px;
+        width: 144px;
+        position: absolute;
+        justify-content: flex-start;
+        scroll-snap-type: y mandatory;
+        flex-direction: column;
+        span {
+            color: $dark-gray-color;
+            font-weight: 500;
+            border-radius: 10px;
+            min-height: calc(175px / 3);
+            scroll-snap-align: start;
+            width: 100%;
+            @include centralize;
+            text-align: center;
+        }
+    }
+    &-active {
+        background-color: $primary-color;
+        border: 3px solid white;
+        color: $white-color !important;
+    }
+    &-input {
+        height: 55px;
+        .span-input {
+            left: auto !important;
+        }
+    }
+    &-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: $primary-color;
+        @include centralize;
+        img {
+            filter: brightness(100);
+            width: 14px;
+            height: 15px;
+        }
+    }
+}

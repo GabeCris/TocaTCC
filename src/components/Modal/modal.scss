@@ -1,0 +1,68 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.modal-container {
+    top: 0;
+    left: 0;
+    z-index: 10;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    @include centralize;
+    .modal-bg {
+        position: absolute;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        width: 100%;
+        height: 100%;
+    }
+    .modal-box {
+        z-index: 2;
+        border-radius: 10px;
+        width: 85%;
+        height: 150px;
+        @include centralize($justify: space-between);
+        flex-direction: column;
+        background-color: $white-color;
+        .title {
+            padding: 20px 12px;
+            text-align: center;
+            @include text($dark-gray-color, 22px);
+            span{
+                text-decoration: underline;
+                text-decoration-color: $primary-color;
+            }
+        }
+        .modal-options {
+            @include centralize;
+            gap: 0;
+            background: none;
+            width: 100%;
+            .modal-text {
+                font-weight: 700;
+                color: $white-color;
+                font-size: 16px;
+            }
+            > div,
+            > a {
+                margin: 0;
+                @include centralize;
+                gap: 12px;
+                border-radius: 0 0 0 10px;
+                height: 50px;
+                width: 50%;
+                img {
+                    width: 16px;
+                }
+            }
+            > a  {
+                border-radius: 0 0 10px 0;
+                background-color: $primary-color;
+            }
+            .modal-reject {
+                p {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}

@@ -10,13 +10,14 @@ const Filter = () => {
     const [openOptions, setOpenOptions] = useState(false);
     return (
         <div className="filter-container">
-            <p className="filter-month">Dezembro</p>
+            <p className="filter-month">Dez 2022</p>
             <div className="filter-content">
                 {filterSelect && (
                     <div
                         className="filter-icon"
                         onClick={() => setFilterSelect("")}
                     >
+                        <img src="../assets/icons/close.svg" />
                         <img
                             src={`../assets/options/step2/${filterSelect}.svg`}
                             alt=""

@@ -9,6 +9,8 @@ const InputText = ({
     value,
     maxLength,
     inputNull,
+    focus,
+    disfocus
 }) => {
     return (
         <>
@@ -19,6 +21,8 @@ const InputText = ({
                 className={`input ${classname} ${inputNull ? "inputNull" : ''}`}
                 placeholder={placeholder}
                 maxLength={maxLength}
+                onFocus={focus}
+                onBlur={disfocus}
             />
         </>
     );

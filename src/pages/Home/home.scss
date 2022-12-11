@@ -1,7 +1,7 @@
-@import '../../styles/mixins';
-@import '../../styles/variables';
+@import "../../styles/mixins";
+@import "../../styles/variables";
 
-.home-container{
+.home-container {
     border-radius: 10px;
     overflow-y: scroll;
     width: 100%;
@@ -11,15 +11,35 @@
     padding-bottom: 16px;
 }
 
-.cards-container-home{
+.cards-container-home {
     margin-top: 50px;
     border-radius: 10px;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-     height: auto;
-     width: 100%;
-     .card-container{
+    height: auto;
+    width: 100%;
+    .card-container {
         scroll-snap-align: start;
-     }
-    
+    }
+    &:empty {
+        height: 100%;
+        width: 100%;
+        @include centralize();
+        overflow: hidden;
+        &::after {
+            font-weight: 700;
+            font-size: 30px;
+            color: $dark-gray-color;
+            content: "Nenhum evento agendado :(";
+            width: 240px;
+            text-align: center;
+        }
+    }
+}
+
+.content {
+    &:has(.cards-container-home:empty),
+    &:has(.demo) {
+        overflow: hidden;
+    }
 }

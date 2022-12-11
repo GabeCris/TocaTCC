@@ -4,8 +4,10 @@ import { useState } from "react";
 export const Reservation = createContext({});
 
 const ContextProvider = ({ children }) => {
-    const [filterSelect, setFilterSelect] = useState('')
+    const [filterSelect, setFilterSelect] = useState("");
     const [typeReservation, setTypeReservation] = useState("court");
+    const [currentUser, setCurrentUser] = useState(null);
+    const [logado, setLogado] = useState(false);
     const [reservationListCourt, setReservationListCourt] = useState({
         icon: "soccer",
         event: "soccer",
@@ -22,6 +24,7 @@ const ContextProvider = ({ children }) => {
         endMinute: 0,
         responsible: "Gabriel Crisanto",
         amount_type: "students",
+        status: "wait",
     });
 
     const [reservationListMaterial, setReservationListMaterial] = useState({
@@ -44,7 +47,7 @@ const ContextProvider = ({ children }) => {
     return (
         <Reservation.Provider
             value={{
-                filterSelect, 
+                filterSelect,
                 setFilterSelect,
                 reservationListCourt,
                 setReservationListCourt,
@@ -52,6 +55,10 @@ const ContextProvider = ({ children }) => {
                 setReservationListMaterial,
                 typeReservation,
                 setTypeReservation,
+                currentUser,
+                setCurrentUser,
+                logado,
+                setLogado,
             }}
         >
             {children}

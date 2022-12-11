@@ -1,39 +1,63 @@
 @import "../../styles/mixins";
 @import "../../styles/variables";
-
 .react-calendar {
     border: none;
     border-radius: 10px;
+    max-width: none;
+    width: calc(100vw - 20px);
+    margin-left: -10px;
     &__navigation {
         @include centralize;
+        justify-content: space-between;
         padding: 10px;
         background-color: $primary-color;
         border-radius: 10px 10px 0 0;
+        margin-bottom: 3px;
         button {
             min-width: 0;
+            flex-grow: unset !important;
         }
         &__arrow {
             @include centralize;
-            font-size: 30px;
             width: 28px;
             height: 28px;
             border-radius: 50%;
             background-color: $white-color !important;
             color: $primary-color;
+            font-size: 0;
+            &::before {
+                font-size: 25px;
+                content: ">";
+            }
+            
             &:hover {
                 background-color: $primary-color;
             }
+        }
+        &__prev-button{
+                &::before {
+                    content: "<";
+                }
         }
         &__label__labelText {
             @include text($size: 18px, $weight: 700, $color: $white-color);
         }
     }
     &__tile {
-        @include text($size: 14px, $weight: 700, $color: #BDBDBD);
-        width: 36px;
+        @include text($size: 14px, $weight: 700, $color: #bdbdbd);
+        max-width: 36px;
         @include centralize;
         height: 36px;
         padding: 0;
+        border-radius: 50% !important;
+        @media only screen and (max-width: 350px) {
+            max-width: 32px;
+            height: 32px;
+        }
+        &:has(span) {
+            background-color: $light-gray-color;
+            color: $dark-gray-color !important;
+        }
         &--now {
             background-color: $primary-color !important;
             color: $white-color !important;
@@ -43,7 +67,10 @@
             background: none;
             border: 3px solid $primary-color !important;
             border-radius: 10px;
-            color: $primary-color
+            color: $primary-color;
+            &:has(span) {
+                background-color: $light-gray-color !important;
+            }
         }
         &:enabled:hover,
         &:enabled:focus {
@@ -55,14 +82,39 @@
     }
     &__month-view__weekdays {
         @include text($size: 16px, $weight: 700, $color: $dark-gray-color);
+        justify-content: center;
+        gap: 10px;
+        max-height: 15px;
+        align-items: center;
+        margin-block: 8px;
         &__weekday {
-            transform: translateX(10px);
+            transform: translateX(5px);
             visibility: hidden;
+            max-width: 36px;
+            width: fit-content;
+            @media only screen and (max-width: 350px) {
+                max-width: 32px;
+                height: 32px;
+            }
         }
         &__weekday::first-letter {
             visibility: visible;
         }
     }
+}
+
+.react-calendar__decade-view__years__year,
+.react-calendar__year-view__months__month{
+    max-width: none;
+    border-radius: 10px !important;
+}
+
+.react-calendar__month-view__days {
+    justify-content: center;
+    gap: 10px;
+    row-gap: 5px;
+    padding-inline: 5px;
+    padding-bottom: 10px;
 }
 
 .react-calendar__navigation__prev2-button,
@@ -76,19 +128,57 @@
 }
 
 .title-date {
-    margin: 16px 0;
+    margin-block: 16px 16px;
     @include text($color: $dark-gray-color, $size: 18px);
 }
 
-.cards-container{
+.react-calendar__month-view__days__day--weekend {
+    color: rgba(255, 0, 0, 0.325);
+}
+
+.cards-container {
     border-radius: 10px;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-     height: 166px;
-     width: 100%;
-     .card-container{
-        scroll-snap-align: start;
-     }
+    height: 166px;
+    width: 100%;
+    &:empty {
+        height: 40px;
+        width: 100%;
+        @include centralize;
+        overflow: hidden;
+        &::after {
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 18px;
+            color: $gray-color;
+            content: "Nenhum evento agendado :(";
+            text-align: center;
+        }
     }
-    
-   
+    @media only screen and (min-height: 500px) {
+        height: 135px;
+    }
+    @media only screen and (min-height: 710px) {
+        height: 185px;
+    }
+    @media only screen and (min-height: 739px) {
+        height: 210px;
+    }
+    @media only screen and (min-height: 795px) {
+        height: 270px;
+    }
+    @media only screen and (min-height: 844px) {
+        height: 320px;
+    }
+    @media only screen and (min-height: 896px) {
+        height: 370px;
+    }
+    .card-container {
+        scroll-snap-align: start;
+    }
+}
+
+.content:has(.react-calendar) {
+    overflow: hidden;
+}

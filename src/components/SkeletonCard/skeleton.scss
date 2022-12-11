@@ -1,0 +1,49 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.skeleton-card-container {
+    *:not(.skeleton-content) {
+        background: linear-gradient(
+            120deg,
+            $light-gray-color 30%,
+            #f0f0f0 38%,
+            #f0f0f0 40%,
+            $light-gray-color 48%
+        );
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        animation: load 1s infinite;
+    }
+    width: 100%;
+    height: 75px;
+    background-color: $white-color;
+    border-radius: 10px;
+    @include centralize($justify: space-between);
+    padding: 8px;
+    gap: 16px;
+    margin-bottom: 16px;
+    .skeleton-icon {
+        border-radius: 10px;
+        height: 60px;
+        min-width: 60px;
+    }
+    .skeleton-content {
+        @include centralize($direction: column, $align: flex-start);
+        gap: 8px;
+        width: 100%;
+        > div {
+            width: 80%;
+            height: 20px;
+            border-radius: 5px;
+            &:first-child {
+                width: 60%;
+            }
+        }
+    }
+}
+
+@keyframes load {
+    100% {
+        background-position: -100% 0;
+    }
+}

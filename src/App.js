@@ -1,4 +1,5 @@
 import Home from "./pages/Home/Home";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Calendar from "./pages/Calendar/Calendar";
 import Scheduling from "./pages/Scheduling/Scheduling";
@@ -12,21 +13,29 @@ import Details from "./pages/Details/Details";
 import DateTime from "./pages/StepsCourt/Step4/DateTime";
 import Finish from "./pages/StepsCourt/Step6/Finish";
 
-import Material from './pages/StepsMaterial/Step2/Material';
-import AmountMaterial from './pages/StepsMaterial/Step3/AmountMaterial';
-import DateTimeMaterial from './pages/StepsMaterial/Step4/DateTimeMaterial';
-import DescriptionMaterial from './pages/StepsMaterial/Step5/DescriptionMaterial';
+import Material from "./pages/StepsMaterial/Step2/Material";
+import AmountMaterial from "./pages/StepsMaterial/Step3/AmountMaterial";
+import DateTimeMaterial from "./pages/StepsMaterial/Step4/DateTimeMaterial";
+import DescriptionMaterial from "./pages/StepsMaterial/Step5/DescriptionMaterial";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
     return (
-        <>  
+        <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home /> } />
-                    <Route path="/login" element={<Login /> } />
-                    <Route path="/register" element={<Register /> } />
+                    <Route
+                        path="/"
+                        element={
+                            <PrivateRoute>
+                                <Home />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                     <Route path="/details/:id" element={<Details />} />
                     <Route path="/calendar" element={<Calendar />} />
                     <Route path="/scheduling" element={<Scheduling />}>
@@ -37,12 +46,29 @@ function App() {
                         <Route path="court/step4" element={<DateTime />} />
                         <Route path="court/step5" element={<Description />} />
                         <Route path="material/step2" element={<Material />} />
-                        <Route path="material/step3" element={<AmountMaterial />} />
-                        <Route path="material/step4" element={<DateTimeMaterial />} />
-                        <Route path="material/step5" element={<DescriptionMaterial />} />
+                        <Route
+                            path="material/step3"
+                            element={<AmountMaterial />}
+                        />
+                        <Route
+                            path="material/step4"
+                            element={<DateTimeMaterial />}
+                        />
+                        <Route
+                            path="material/step5"
+                            element={<DescriptionMaterial />}
+                        />
                     </Route>
                     <Route path="/notification" element={<Notification />} />
-                    <Route path="/settings" element={<Settings />} />
+
+                    <Route
+                        path="/settings"
+                        element={
+                            <PrivateRoute>
+                                <Settings />
+                            </PrivateRoute>
+                        }
+                    />
                 </Routes>
             </BrowserRouter>
         </>

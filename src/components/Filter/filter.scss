@@ -69,11 +69,12 @@
         }
     }
     &-icon {
-        width: 30px;
+        padding: 8px;
         height: 30px;
         border-radius: 5px;
         background-color: $primary-color;
         @include centralize;
+        gap: 8px;
         img {
             filter: brightness(100);
             width: 14px;

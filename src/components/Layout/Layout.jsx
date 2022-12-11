@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./layout.scss";
 import { NavLink, Link } from "react-router-dom";
 import Data from "./data";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { Reservation } from "../../contexts/Reservation";
 
 const SignLogin = () => {
     return (
@@ -18,8 +20,17 @@ const SignLogin = () => {
 };
 
 const Layout = ({ children, title }) => {
-    const location = useLocation();
+    const { currentUser, setCurrentUser } = useContext(Reservation);
 
+    const location = useLocation();
+    const [fullScreen, setFullScreen] = useState(false);
+
+    const changeFullScreen = () => {
+        fullScreen
+            ? document.exitFullscreen()
+            : document.body.requestFullscreen();
+        setFullScreen(!fullScreen);
+    };
     const appBar = () => {
         switch (location.pathname) {
             case "/scheduling/step6":
@@ -39,9 +50,14 @@ const Layout = ({ children, title }) => {
                 return (
                     <section className="appbar">
                         <h1 className="title">{title}</h1>
-                        <Link to="/">
-                            <img src="../assets/icons/logo.svg" />
-                        </Link>
+                        <img
+                            src={`../assets/icons/logo-${
+                                currentUser?.email == "admin@gmail.com"
+                                    ? "admin"
+                                    : "student"
+                            }.svg`}
+                            onClick={() => changeFullScreen()}
+                        />
                     </section>
                 );
         }

@@ -19,12 +19,12 @@ const data = [
     {
         route: "/notification",
         path: `${path}/notification.svg`,
-        text: "Notificações",
+        text: "Pessoais",
     },
     {
         route: "/settings",
-        path: `${path}/settings.svg`,
-        text: "Configurações",
+        path: `${path}/perfil.svg`,
+        text: "Perfil",
     },
 ];
 

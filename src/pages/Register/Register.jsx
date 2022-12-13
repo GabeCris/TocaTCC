@@ -29,18 +29,24 @@ const Register = () => {
                 }
                 <h1 className="section-title">Cadastro</h1>
                 <div className="input-container">
-                    <InputText
-                        placeholder={"Informe seu email"}
-                        change={(e) => setEmail(e.target.value)}
-                        focus={() => setHide(true)}
-                        disfocus={() => setHide(false)}
-                    />
-                    <InputText
-                        placeholder={"Informe sua senha"}
-                        change={(e) => setPassword(e.target.value)}
-                        focus={() => setHide(true)}
-                        disfocus={() => setHide(false)}
-                    />
+                    <label className="label-input">
+                        <InputText
+                            placeholder={"Informe seu email"}
+                            change={(e) => setEmail(e.target.value)}
+                            focus={() => setHide(true)}
+                            disfocus={() => setHide(false)}
+                        />
+                        {email && <span className="span-input">E-mail</span>}
+                    </label>
+                    <label className="label-input">
+                        <InputText
+                            placeholder={"Informe sua senha"}
+                            change={(e) => setPassword(e.target.value)}
+                            focus={() => setHide(true)}
+                            disfocus={() => setHide(false)}
+                        />
+                        {password && <span className="span-input">Senha</span>}
+                    </label>
                 </div>
             </section>
             <section className="buttons-container buttons-login">

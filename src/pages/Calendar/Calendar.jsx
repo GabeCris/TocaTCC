@@ -21,7 +21,9 @@ const Calendar = () => {
     let dataFormatada =
         date.getFullYear() +
         "-" +
-        (date.getMonth() + 1) +
+        (date?.getMonth() + 1 < 10
+            ? `0${date.getMonth() + 1}`
+            : date.getMonth() + 1) +
         "-" +
         (date?.getDate() < 10 ? `0${date.getDate()}` : date.getDate());
 
@@ -91,14 +93,16 @@ const Calendar = () => {
                 onChange={setDate}
                 value={date}
                 calendarType={"US"}
-                tileContent={({ date }) => {
+                tileContent={({ date, view }) => {
                     if (
                         itemDate?.find(
                             (x) =>
                                 x ==
                                 date.getFullYear() +
                                     "-" +
-                                    (date.getMonth() + 1) +
+                                    (date?.getMonth() + 1 < 10
+                                        ? `0${date.getMonth() + 1}`
+                                        : date.getMonth() + 1) +
                                     "-" +
                                     (date?.getDate() < 10
                                         ? `0${date.getDate()}`

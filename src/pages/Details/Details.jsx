@@ -7,11 +7,15 @@ import "./details.scss";
 import { db } from "../../config/firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import SkeletonDetails from "../../components/SkeletonDetails/SkeletonDetails";
+import { useContext } from "react";
+import { Reservation } from "../../contexts/Reservation";
 
 const Details = () => {
+    const { currentUser } = useContext(Reservation);
     const { id } = useParams();
     const [users, setUsers] = useState([]);
     const [data, setData] = useState([]);
+    const [filterType, setFilterType] = useState("ok");
     const usersCollectionsRef = collection(db, "reservation");
     const [skeleton, setSkeleton] = useState(true);
 
@@ -26,6 +30,7 @@ const Details = () => {
 
     useEffect(() => {
         users.filter((sla) => sla.id === id).map((sla) => setData(sla));
+        setFilterType(currentUser?.email == "admin@gmail.com" ? "wait" : "ok");
     });
 
     return (
@@ -35,8 +40,8 @@ const Details = () => {
                 {skeleton ? (
                     <SkeletonDetails></SkeletonDetails>
                 ) : (
-                    <CardDetails props={data}></CardDetails>
-                    )}
+                    <CardDetails props={data} filter={filterType}></CardDetails>
+                )}
 
                 <Link to="/">Voltar</Link>
             </section>

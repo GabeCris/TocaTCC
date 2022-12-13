@@ -10,7 +10,7 @@ import { Reservation } from "../../contexts/Reservation";
 import SkeletonCard from "../../components/SkeletonCard/SkeletonCard";
 
 const Home = () => {
-    const { filterSelect, currentUser } = useContext(Reservation);
+    const { filterSelect, currentUser, setReservationListCourt, reservationListCourt } = useContext(Reservation);
     const [users, setUsers] = useState([]);
     const [view, setView] = useState(true);
     const [filterType, setFilterType] = useState("ok");
@@ -24,9 +24,14 @@ const Home = () => {
             currentUser?.email == "admin@gmail.com"
                 ? setFilterType("wait")
                 : setFilterType("ok");
-        };
+                setReservationListCourt({
+                    ...reservationListCourt,
+                    uid: currentUser?.uid,
+                });
+            };
         getUsers();
     }, []);
+
 
     useEffect(() => {
         changeUsers();

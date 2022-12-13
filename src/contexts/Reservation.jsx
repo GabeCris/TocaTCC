@@ -25,6 +25,7 @@ const ContextProvider = ({ children }) => {
         responsible: "Gabriel Crisanto",
         amount_type: "students",
         status: "wait",
+        uid: ""
     });
 
     const [reservationListMaterial, setReservationListMaterial] = useState({

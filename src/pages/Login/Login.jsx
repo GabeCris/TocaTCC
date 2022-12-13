@@ -14,7 +14,8 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loader from "../../components/Loader/Loader";
 
 const Login = () => {
-    const { setLogado, logado, setCurrentUser } = useContext(Reservation);
+    const { setLogado, logado, setCurrentUser, currentUser } =
+        useContext(Reservation);
     const [email, setEmail] = useState("");
     const [hide, setHide] = useState(false);
     const [password, setPassword] = useState("");
@@ -56,21 +57,26 @@ const Login = () => {
                 }
                 <h1 className="section-title">Login</h1>
                 <div className="input-container">
-                    <InputText
-                        type="email"
-                        placeholder={"Informe seu email"}
-                        change={(e) => setEmail(e.target.value)}
-                        focus={() => setHide(true)}
-                        disfocus={() => setHide(false)}
-                    />
-                    <InputText
-                        type="password"
-                        placeholder={"Informe sua senha"}
-                        change={(e) => setPassword(e.target.value)}
-                        focus={() => setHide(true)}
-                        disfocus={() => setHide(false)}
-                    />
-                    {error && "EMAIL OU SENHA INVALIDOS"}
+                    <label className="label-input">
+                        <InputText
+                            type="email"
+                            placeholder={"Informe seu email"}
+                            change={(e) => setEmail(e.target.value)}
+                            focus={() => setHide(true)}
+                            disfocus={() => setHide(false)}
+                        />
+                        {email && <span className="span-input">E-mail</span>}
+                    </label>
+                    <label className="label-input">
+                        <InputText
+                            type="password"
+                            placeholder={"Informe sua senha"}
+                            change={(e) => setPassword(e.target.value)}
+                            focus={() => setHide(true)}
+                            disfocus={() => setHide(false)}
+                        />
+                        {password && <span className="span-input">Senha</span>}
+                    </label>
                 </div>
             </section>
             <section className="buttons-container buttons-login">

@@ -24,7 +24,7 @@ const data = [
     {
         route: "/settings",
         path: `${path}/perfil.svg`,
-        text: "Perfil",
+        text: "Conta",
     },
 ];
 

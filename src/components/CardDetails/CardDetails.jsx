@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import { getFirestore, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "./card-details.scss";
 
-const CardDetails = ({ props }) => {
+const CardDetails = ({ props, filter }) => {
     const [favorite, setFavorite] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [currentOption, setCurrentOption] = useState("aceitar");
+
     const formatHour = (value) => {
         const newValue = value < 10 ? "0" + value : value;
         return newValue;
     };
+
+    console.log(filter);
 
     const changeData = (option) => {
         const docRef = doc(db, "reservation", props.id);
@@ -93,7 +96,7 @@ const CardDetails = ({ props }) => {
                         <p className="card-nav_text">{props.description}</p>
                     </div>
                 </nav>
-                {props.status != "wait" ? (
+                {filter !== "wait" || props?.status != "wait"? (
                     <section
                         className="card-favorite"
                         onClick={() => setFavorite(!favorite)}

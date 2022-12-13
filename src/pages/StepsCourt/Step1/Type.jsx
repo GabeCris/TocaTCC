@@ -10,9 +10,15 @@ import InputText from "../../../components/InputText/InputText";
 import "./type.scss";
 
 const Type = () => {
-    const { setReservationListCourt, reservationListCourt, setTypeReservation , typeReservation} = useContext(Reservation);
+    const {
+        currentUser,
+        setReservationListCourt,
+        reservationListCourt,
+        setTypeReservation,
+        typeReservation,
+    } = useContext(Reservation);
     const [selected, setSelected] = useState(typeReservation);
-    const [inputNull, setInputNull] = useState(false)
+    const [inputNull, setInputNull] = useState(false);
     const [typeResponsible, setTypeResponsible] = useState(
         reservationListCourt.responsible_type
     );
@@ -28,16 +34,22 @@ const Type = () => {
 
     const changeResponsibleName = (e) => {
         const option = e.target.value;
-        option === '' ? setInputNull(true) : setInputNull(false) 
+        option === "" ? setInputNull(true) : setInputNull(false);
         const textRefactor = option.replace(/[\d]/g, "");
         setResponsibleName(textRefactor);
-        setReservationListCourt({ ...reservationListCourt, responsible: option });
+        setReservationListCourt({
+            ...reservationListCourt,
+            responsible: option,
+        });
     };
 
     const changeTypeResponsible = (e) => {
         const option = e.target.id;
         setTypeResponsible(option);
-        setReservationListCourt({ ...reservationListCourt, responsible_type: option });
+        setReservationListCourt({
+            ...reservationListCourt,
+            responsible_type: option,
+        });
     };
 
     const changeOption = (e) => {
@@ -110,9 +122,14 @@ const Type = () => {
             </div>
             <section className="buttons-container">
                 <Button status={buttonActive}>
-                    <Link to={buttonActive && 
-                        (reservationListCourt.type == 'court' ? 
-                        "/scheduling/court/step2" : "/scheduling/material/step2")}>
+                    <Link
+                        to={
+                            buttonActive &&
+                            (reservationListCourt.type == "court"
+                                ? "/scheduling/court/step2"
+                                : "/scheduling/material/step2")
+                        }
+                    >
                         Próximo
                     </Link>
                 </Button>

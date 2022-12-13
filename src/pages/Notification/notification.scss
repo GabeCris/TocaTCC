@@ -1,0 +1,38 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.personal-info-container {
+    position: fixed;
+    z-index: 10;
+    background-color: $light-gray-color;
+    width: calc(100% - 40px);
+    border-radius: 10px 10px 0 0;
+    padding-block: 20px 5px;
+    display: flex;
+    justify-content: space-around;
+    .personal-info {
+        font-weight: 700;
+        color: #7d7c84;
+        font-size: 14px;
+        margin-bottom: 5px;
+        gap: 5px;
+        @include centralize;
+        justify-content: flex-start;
+        span{
+            color: $primary-color;
+            font-size: 18px;
+        }
+        img {
+            width: 10px;
+            height: 10px;
+            filter: brightness(40%);
+        }
+    }
+}
+.personal-cards {
+    padding-top: 60px;
+    margin-top: 20px;
+    .card-container{
+        margin-bottom: 30px;
+    }
+}

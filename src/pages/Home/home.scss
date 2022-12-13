@@ -37,9 +37,36 @@
     }
 }
 
+.cards-container-notification {
+    margin: 0;
+    height: 100%;
+    &:has(.personal-cards:empty){
+        overflow: hidden;
+    }
+    .personal-cards {
+        &:empty {
+            height: 100%;
+            width: 100%;
+            @include centralize();
+            overflow: hidden;
+            &::after {
+                font-weight: 700;
+                font-size: 30px;
+                color: $dark-gray-color;
+                content: "Nenhum evento agendado :(";
+                width: 240px;
+                text-align: center;
+            }
+        }
+    }
+}
+
 .content {
     &:has(.cards-container-home:empty),
     &:has(.demo) {
         overflow: hidden;
+    }
+    &:has(.personal-info-container) {
+        padding-top: 0;
     }
 }

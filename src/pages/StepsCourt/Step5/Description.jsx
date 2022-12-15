@@ -20,7 +20,7 @@ const Description = () => {
                 ? true
                 : false
         );
-    });
+    }, [reservationListCourt.title, reservationListCourt.description]);
 
     const changeOption = (e, type) => {
         const option = e.target.value;

@@ -22,6 +22,10 @@
             background-color: $primary-color;
             border-radius: 10px;
             position: relative;
+            img{
+                max-width: 32px;
+                filter: brightness(100);
+            }
         }
         &_title {
             font-weight: 500;

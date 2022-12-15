@@ -76,8 +76,27 @@ const CardDetails = ({ props, filter }) => {
                 </nav>
                 <nav className="card-nav">
                     <div className="card-nav_item">
-                        <img src="../assets/events/details/person.svg" alt="" />
-                        <p className="card-nav_text">{props.amount} pessoas</p>
+                        {props.type == "court" ? (
+                            <>
+                                <img
+                                    src="../assets/events/details/person.svg"
+                                    alt=""
+                                />
+                                <p className="card-nav_text">
+                                    {props.amount} pessoas
+                                </p>
+                            </>
+                        ) : (
+                            <>
+                                <img
+                                    src="../assets/events/details/amount.svg"
+                                    alt=""
+                                />
+                                <p className="card-nav_text">
+                                    {props.amount} itens
+                                </p>
+                            </>
+                        )}
                     </div>
                     <div className="card-nav_item">
                         <img
@@ -96,7 +115,7 @@ const CardDetails = ({ props, filter }) => {
                         <p className="card-nav_text">{props.description}</p>
                     </div>
                 </nav>
-                {filter !== "wait" || props?.status != "wait"? (
+                {filter !== "wait" || props?.status != "wait" ? (
                     <section
                         className="card-favorite"
                         onClick={() => setFavorite(!favorite)}

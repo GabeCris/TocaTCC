@@ -32,6 +32,7 @@ const Amount = () => {
                     value={amount}
                     onChange={changeAmount}
                 />
+                <p className="amount-description">*O número de materiais a ser emprestado vai depender da disponibilidade do campus no momento da aprovação da reserva</p>
             </div>
             <section className="buttons-container">
                 <Button>

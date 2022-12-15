@@ -9,22 +9,31 @@ import { db } from "../../../config/firebase";
 import { addDoc, collection } from "firebase/firestore";
 
 const Description = () => {
-    const { setReservationListMaterial, reservationListMaterial } = useContext(Reservation);
+    const { setReservationListMaterial, reservationListMaterial } =
+        useContext(Reservation);
     const [buttonActive, setButtonActive] = useState(false);
     const usersCollectionsRef = collection(db, "reservation");
 
     useEffect(() => {
         setButtonActive(
-            reservationListMaterial.title && reservationListMaterial.description ? true : false
+            reservationListMaterial.title && reservationListMaterial.description
+                ? true
+                : false
         );
     });
 
     const changeOption = (e, type) => {
         const option = e.target.value;
         if (type === "title")
-            setReservationListMaterial({ ...reservationListMaterial, title: option });
+            setReservationListMaterial({
+                ...reservationListMaterial,
+                title: option,
+            });
         else if (type === "desc")
-            setReservationListMaterial({ ...reservationListMaterial, description: option });
+            setReservationListMaterial({
+                ...reservationListMaterial,
+                description: option,
+            });
     };
 
     return (
@@ -33,6 +42,7 @@ const Description = () => {
             <div className="inputs-container">
                 <label className="label-input">
                     <InputText
+                        maxLength={26}
                         classname="input-title"
                         value={reservationListMaterial.title}
                         change={(e) => changeOption(e, "title")}
@@ -44,6 +54,7 @@ const Description = () => {
                 </label>
                 <label className="label-input">
                     <textarea
+                        maxLength={64}
                         className="input-description"
                         value={reservationListMaterial.description}
                         onChange={(e) => changeOption(e, "desc")}

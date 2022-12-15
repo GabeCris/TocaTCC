@@ -18,9 +18,6 @@
         a{
             @include text($white-color, 24px)
         }
-        &:active{
-            opacity: 80%;
-        }
     }
     .inactive-button{
         opacity: 30%;

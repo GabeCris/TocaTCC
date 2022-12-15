@@ -6,8 +6,21 @@
     gap: 16px;
 }
 
-.buttons-login{
+.buttons-login {
     padding: 0;
     position: relative;
     bottom: 0;
+}
+
+.show-pass {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #184e77;
+    input {
+        display: none;
+    }
 }

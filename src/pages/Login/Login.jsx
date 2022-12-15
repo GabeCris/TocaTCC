@@ -20,6 +20,8 @@ const Login = () => {
     const [hide, setHide] = useState(false);
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(true);
+    const [showPass, setShowPass] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const [signInWithEmailAndPassword, error] =
         useSignInWithEmailAndPassword(auth);
 
@@ -31,9 +33,7 @@ const Login = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    const handleSignIn = () => {
-        signInWithEmailAndPassword(email, password);
-
+    useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setLogado(true);
@@ -42,8 +42,16 @@ const Login = () => {
                 setLogado(false);
             }
         });
+    }, [auth]);
+
+    const handleSignIn = () => {
+        signInWithEmailAndPassword(email, password);
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                setErrorMessage("Usuário ou senha inválidos");
+            }
+        });
     };
-    document.body.requestFullscreen();
 
     return (
         <Layout title="Home">
@@ -57,7 +65,10 @@ const Login = () => {
                 }
                 <h1 className="section-title">Login</h1>
                 <div className="input-container">
-                    <label className="label-input">
+                    <label
+                        className="label-input"
+                        onChange={() => setErrorMessage("")}
+                    >
                         <InputText
                             type="email"
                             placeholder={"Informe seu email"}
@@ -67,17 +78,30 @@ const Login = () => {
                         />
                         {email && <span className="span-input">E-mail</span>}
                     </label>
-                    <label className="label-input">
+                    <label
+                        className="label-input"
+                        onChange={() => setErrorMessage("")}
+                    >
                         <InputText
-                            type="password"
+                            type={showPass ? "text" : "password"}
                             placeholder={"Informe sua senha"}
                             change={(e) => setPassword(e.target.value)}
                             focus={() => setHide(true)}
                             disfocus={() => setHide(false)}
                         />
+                        <label className="show-pass">
+                            {!showPass ? "Mostrar" : "Ocultar"}
+                            <input
+                                type="checkbox"
+                                onChange={() => setShowPass(!showPass)}
+                            />
+                        </label>
                         {password && <span className="span-input">Senha</span>}
                     </label>
                 </div>
+                {errorMessage && (
+                    <span className="error-message">*{errorMessage}</span>
+                )}
             </section>
             <section className="buttons-container buttons-login">
                 <Button

@@ -1,7 +1,7 @@
 @import "../../../styles/mixins";
 @import "../../../styles/variables";
 
-.date-container{
+.date-container {
     gap: 22px;
 }
 .date-input {
@@ -75,6 +75,6 @@
     }
 }
 
-.error{
-    color: red;
+.error {
+    color: $primary-color;
 }

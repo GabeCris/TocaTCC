@@ -11,7 +11,8 @@ import { initialMinute, initialHour, endHour, endMinute } from "./timeList";
 
 const DateTime = () => {
     const [dateSelected, setDateSelected] = useState("2022-11-3");
-    const { setReservationListMaterial, reservationListMaterial } = useContext(Reservation);
+    const { setReservationListMaterial, reservationListMaterial } =
+        useContext(Reservation);
     const [status, setStatus] = useState(true);
 
     let date = new Date();
@@ -20,7 +21,10 @@ const DateTime = () => {
 
     useEffect(() => {
         setDateSelected(dataFormatada);
-        setReservationListMaterial({ ...reservationListMaterial, date: dataFormatada });
+        setReservationListMaterial({
+            ...reservationListMaterial,
+            date: dataFormatada,
+        });
     }, []);
 
     useEffect(() => {
@@ -30,26 +34,40 @@ const DateTime = () => {
     const changeDate = (e) => {
         const option = e.target.value;
         setDateSelected(option);
-        setReservationListMaterial({ ...reservationListMaterial, date: option });
+        setReservationListMaterial({
+            ...reservationListMaterial,
+            date: option,
+        });
     };
 
     const validateTime = () => {
-        if (reservationListMaterial.initialHour > reservationListMaterial.endHour) {
-            setStatus(false);
-        } else if (
-            reservationListMaterial.initialHour == reservationListMaterial.endHour &&
-            reservationListMaterial.initialMinute > reservationListMaterial.endMinute
+        if (
+            reservationListMaterial.initialHour >
+            reservationListMaterial.endHour
         ) {
             setStatus(false);
         } else if (
-            reservationListMaterial.initialHour == reservationListMaterial.endHour &&
-            reservationListMaterial.initialMinute == reservationListMaterial.endMinute
+            reservationListMaterial.initialHour ==
+                reservationListMaterial.endHour &&
+            reservationListMaterial.initialMinute >
+                reservationListMaterial.endMinute
         ) {
             setStatus(false);
-        } else if (reservationListMaterial.initialHour + 2 < reservationListMaterial.endHour) {
+        } else if (
+            reservationListMaterial.initialHour ==
+                reservationListMaterial.endHour &&
+            reservationListMaterial.initialMinute ==
+                reservationListMaterial.endMinute
+        ) {
             setStatus(false);
         } else if (
-            reservationListMaterial.initialHour + 2 == reservationListMaterial.endHour &&
+            reservationListMaterial.initialHour + 2 <
+            reservationListMaterial.endHour
+        ) {
+            setStatus(false);
+        } else if (
+            reservationListMaterial.initialHour + 2 ==
+                reservationListMaterial.endHour &&
             reservationListMaterial.endMinute == 30
         ) {
             setStatus(false);
@@ -65,7 +83,6 @@ const DateTime = () => {
                 <input
                     type="date"
                     value={dateSelected}
-                    placeholder={"teste"}
                     max="2024-01-01"
                     min="2022-01-01"
                     onChange={(e) => changeDate(e)}
@@ -74,19 +91,31 @@ const DateTime = () => {
                 <span className="span-input">Data</span>
             </label>
             <div className="time-container">
-                <SelectInput list={initialHour} label={"Início"} type={1} />
+                <SelectInput
+                    list={initialHour}
+                    label={"Início"}
+                    id={1}
+                    type={"material"}
+                />
                 <span>:</span>
-                <SelectInput list={initialMinute} type={2} />
+                <SelectInput list={initialMinute} id={2} type={"material"} />
             </div>
             <div className="time-container">
-                <SelectInput list={endHour} label={"Fim"} type={3} />
+                <SelectInput
+                    list={endHour}
+                    label={"Fim"}
+                    id={3}
+                    type={"material"}
+                />
                 <span>:</span>
-                <SelectInput list={endMinute} type={4} />
+                <SelectInput list={endMinute} id={4} type={"material"} />
             </div>
             {!status && <span className="error">*Horário inválido</span>}
             <section className="buttons-container">
                 <Button status={status}>
-                    <Link to={status && "/scheduling/material/step5"}>Próximo</Link>
+                    <Link to={status && "/scheduling/material/step5"}>
+                        Próximo
+                    </Link>
                 </Button>
                 <SecondaryButton>
                     <Link to="/scheduling/material/step3">Voltar</Link>

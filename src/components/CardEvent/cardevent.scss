@@ -72,6 +72,10 @@
                 height: 20px;
                 border-radius: 100%;
             }
+            img{
+                filter: brightness(100);
+                max-width: 32px;
+            }
         }
         .card-info {
             gap: 5px;

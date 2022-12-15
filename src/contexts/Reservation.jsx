@@ -9,7 +9,6 @@ const ContextProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [logado, setLogado] = useState(false);
     const [reservationListCourt, setReservationListCourt] = useState({
-        icon: "soccer",
         event: "soccer",
         type: "court",
         amount: 10,
@@ -29,14 +28,13 @@ const ContextProvider = ({ children }) => {
     });
 
     const [reservationListMaterial, setReservationListMaterial] = useState({
-        icon: "soccer",
-        material: "ball",
+        event: "ball",
         type: "material",
-        amount: 10,
+        amount: 1,
         participants: "students",
         responsible_type: "student",
-        description: "Jogo de fute da galerinha",
-        title: "Futebol de Info19",
+        title: "Emprestimo de material",
+        description: "Preciso deste material para realização de atividade",
         date: "05/04",
         initialHour: 7,
         initialMinute: 0,
@@ -44,6 +42,8 @@ const ContextProvider = ({ children }) => {
         endMinute: 0,
         responsible: "Gabriel Crisanto",
         amount_type: "students",
+        status: "wait",
+        uid: ""
     });
     return (
         <Reservation.Provider

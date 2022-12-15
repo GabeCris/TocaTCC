@@ -11,3 +11,14 @@
     position: relative;
     bottom: 0;
 }
+
+.error-message{
+    position: absolute;
+    display: block;
+    top: 60px;
+    left: 0;
+    right: 0;
+    color: $primary-color;
+    font-size: 14px;
+    text-align: center;
+}

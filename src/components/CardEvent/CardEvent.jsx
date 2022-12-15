@@ -14,6 +14,7 @@ const CardEvent = ({
     index,
     id,
     status,
+    type = "court",
 }) => {
     const formatedDate = date?.split("-")?.reverse()?.splice(0, 2)?.join("/");
 
@@ -79,10 +80,17 @@ const CardEvent = ({
                                 </p>
                             </div>
                             <div className="card-nav_item">
-                                <img
-                                    src="./assets/events/icons/people.svg"
-                                    alt=""
-                                />
+                                {type == "court" ? (
+                                    <img
+                                        src="./assets/events/icons/people.svg"
+                                        alt=""
+                                    />
+                                ) : (
+                                    <img
+                                        src="./assets/events/icons/amount.svg"
+                                        alt=""
+                                    />
+                                )}
                                 <p className="card-nav_text">{amount}</p>
                             </div>
                         </nav>

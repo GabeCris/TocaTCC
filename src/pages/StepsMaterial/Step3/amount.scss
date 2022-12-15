@@ -74,3 +74,10 @@
         }
     }
 }
+
+.amount-description{
+    margin-top: 30px;
+    text-align: center;
+    @include text($primary-color, 16px, 500);
+    width: 80%;
+}

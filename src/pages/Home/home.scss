@@ -40,7 +40,8 @@
 .cards-container-notification {
     margin: 0;
     height: 100%;
-    &:has(.personal-cards:empty){
+    scroll-snap-type: none;
+    &:has(.personal-cards:empty) {
         overflow: hidden;
     }
     .personal-cards {
@@ -61,12 +62,49 @@
     }
 }
 
-.content {
+.layout-container {
     &:has(.cards-container-home:empty),
     &:has(.demo) {
         overflow: hidden;
     }
     &:has(.personal-info-container) {
         padding-top: 0;
+        padding-bottom: 60px;
+    }
+    &:has(input[type="text"]:focus),
+    &:has(textarea:focus) {
+        :not(.login_content) {
+            ~.buttons-container,
+            .options-container,
+            .section-title {
+                display: none;
+            }
+        }
+        :not(.login_content) {
+            ~.buttons-container {
+                transition: 0.2s;
+                display: flex;
+                align-items: flex-end;
+                bottom: 40px;
+                .button {
+                    z-index: 10;
+                    width: 80px;
+                    a {
+                        font-size: 0;
+                        &::before {
+                            content: ">";
+                            transform: rotate(90deg);
+                            font-size: 30px;
+                        }
+                    }
+                }
+                .secondary-button {
+                    display: none;
+                }
+            }
+        }
+        .navbar {
+            display: none;
+        }
     }
 }

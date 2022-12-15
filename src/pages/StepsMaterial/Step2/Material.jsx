@@ -10,11 +10,12 @@ import SecondaryButton from "../../../components/SecondaryButton/SecondaryButton
 
 const Sport = () => {
     const { setReservationListMaterial, reservationListMaterial } = useContext(Reservation);
-    const [selected, setSelected] = useState(reservationListMaterial.material);
+    const [selected, setSelected] = useState(reservationListMaterial.event);
     const changeOption = (e) => {
         const option = e.target.value;
         setSelected(option);
-        setReservationListMaterial({ ...reservationListMaterial, material: option });
+        setReservationListMaterial({ ...reservationListMaterial, event: option });
+
     };
 
     return (

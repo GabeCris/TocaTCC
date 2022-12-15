@@ -14,6 +14,8 @@ const Type = () => {
         currentUser,
         setReservationListCourt,
         reservationListCourt,
+        setReservationListMaterial,
+        reservationListMaterial,
         setTypeReservation,
         typeReservation,
     } = useContext(Reservation);
@@ -41,6 +43,10 @@ const Type = () => {
             ...reservationListCourt,
             responsible: option,
         });
+        setReservationListMaterial({
+            ...reservationListMaterial,
+            responsible: option,
+        });
     };
 
     const changeTypeResponsible = (e) => {
@@ -50,13 +56,16 @@ const Type = () => {
             ...reservationListCourt,
             responsible_type: option,
         });
+        setReservationListMaterial({
+            ...reservationListMaterial,
+            responsible_type: option,
+        });
     };
 
     const changeOption = (e) => {
         const option = e.target.value;
         setSelected(option);
         setTypeReservation(option);
-        setReservationListCourt({ ...reservationListCourt, type: option });
     };
     return (
         <section className="step-container type-container">
@@ -125,7 +134,7 @@ const Type = () => {
                     <Link
                         to={
                             buttonActive &&
-                            (reservationListCourt.type == "court"
+                            (typeReservation == "court"
                                 ? "/scheduling/court/step2"
                                 : "/scheduling/material/step2")
                         }

@@ -82,14 +82,24 @@ const DateTime = () => {
                 <span className="span-input">Data</span>
             </label>
             <div className="time-container">
-                <SelectInput list={initialHour} label={"Início"} type={1} />
+                <SelectInput
+                    list={initialHour}
+                    label={"Início"}
+                    id={1}
+                    type={"court"}
+                />
                 <span>:</span>
-                <SelectInput list={initialMinute} type={2} />
+                <SelectInput list={initialMinute} id={2} type={"court"} />
             </div>
             <div className="time-container">
-                <SelectInput list={endHour} label={"Fim"} type={3} />
+                <SelectInput
+                    list={endHour}
+                    label={"Fim"}
+                    id={3}
+                    type={"court"}
+                />
                 <span>:</span>
-                <SelectInput list={endMinute} type={4} />
+                <SelectInput list={endMinute} id={4} type={"court"} />
             </div>
             {!status && <span className="error">*Horário inválido</span>}
             <section className="buttons-container">

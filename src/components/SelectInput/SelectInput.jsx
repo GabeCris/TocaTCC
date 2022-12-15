@@ -2,18 +2,61 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { Reservation } from "../../contexts/Reservation";
 
-const SelectInput = ({list, label, type}) => {
-    const { setReservationListCourt, reservationListCourt } = useContext(Reservation);
+const SelectInput = ({ list, label, type, id }) => {
+    const {
+        setReservationListMaterial,
+        reservationListMaterial,
+        setReservationListCourt,
+        reservationListCourt,
+    } = useContext(Reservation);
     const [select, setSelect] = useState(list[0]);
     const [openOptions, setOpenOptions] = useState(false);
 
-
     const changeTime = (item) => {
-        setSelect(item)
-        type == 1 && setReservationListCourt({ ...reservationListCourt, initialHour: item});
-        type == 2 && setReservationListCourt({ ...reservationListCourt, initialMinute: item });
-        type == 3 && setReservationListCourt({ ...reservationListCourt, endHour: item });
-        type == 4 && setReservationListCourt({ ...reservationListCourt, endMinute: item });
+        setSelect(item);
+        if (type === "material") {
+            id == 1 &&
+                setReservationListMaterial({
+                    ...reservationListMaterial,
+                    initialHour: item,
+                });
+            id == 2 &&
+                setReservationListMaterial({
+                    ...reservationListMaterial,
+                    initialMinute: item,
+                });
+            id == 3 &&
+                setReservationListMaterial({
+                    ...reservationListMaterial,
+                    endHour: item,
+                });
+            id == 4 &&
+                setReservationListMaterial({
+                    ...reservationListMaterial,
+                    endMinute: item,
+                });
+        } else if (type === "court") {
+            id == 1 &&
+                setReservationListCourt({
+                    ...reservationListCourt,
+                    initialHour: item,
+                });
+            id == 2 &&
+                setReservationListCourt({
+                    ...reservationListCourt,
+                    initialMinute: item,
+                });
+            id == 3 &&
+                setReservationListCourt({
+                    ...reservationListCourt,
+                    endHour: item,
+                });
+            id == 4 &&
+                setReservationListCourt({
+                    ...reservationListCourt,
+                    endMinute: item,
+                });
+        }
     };
 
     return (
@@ -32,8 +75,7 @@ const SelectInput = ({list, label, type}) => {
                         <span
                             className={select == item && "select-active"}
                             onClick={() => (
-                                changeTime(item),
-                                setOpenOptions(!openOptions)
+                                changeTime(item), setOpenOptions(!openOptions)
                             )}
                         >
                             {item < 10 ? "0" + item : item}

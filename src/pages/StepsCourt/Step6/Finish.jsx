@@ -8,13 +8,28 @@ import { addDoc, collection } from "firebase/firestore";
 import { Reservation } from "../../../contexts/Reservation";
 
 const Finish = () => {
-    const { reservationListCourt, reservationListMaterial, typeReservation } =
-        useContext(Reservation);
+    const {
+        setReservationListCourt,
+        setReservationListMaterial,
+        reservationListCourt,
+        reservationListMaterial,
+        typeReservation,
+        currentUser,
+    } = useContext(Reservation);
     const usersCollectionsRef = collection(db, "reservation");
     const [insertDB, setInsertDB] = useState();
 
+
     useEffect(() => {
         (async () => {
+            setReservationListCourt({
+                ...reservationListCourt,
+                uid: currentUser?.uid,
+            });
+            setReservationListMaterial({
+                ...reservationListMaterial,
+                uid: currentUser?.uid,
+            });
             typeReservation == "court"
                 ? setInsertDB(
                       await addDoc(usersCollectionsRef, {
@@ -51,7 +66,7 @@ const Finish = () => {
                     <Link to="/scheduling/step1">Nova reserva</Link>
                 </Button>
                 <SecondaryButton>
-                    <Link to="/">Sair</Link>
+                    <Link to="/notification">Minhas reservas</Link>
                 </SecondaryButton>
             </section>
         </section>

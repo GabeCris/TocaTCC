@@ -10,7 +10,14 @@ import { Reservation } from "../../contexts/Reservation";
 import SkeletonCard from "../../components/SkeletonCard/SkeletonCard";
 
 const Home = () => {
-    const { filterSelect, currentUser, setReservationListCourt, reservationListCourt } = useContext(Reservation);
+    const {
+        filterSelect,
+        currentUser,
+        setReservationListCourt,
+        reservationListCourt,
+        setReservationListMaterial,
+        reservationListMaterial,
+    } = useContext(Reservation);
     const [users, setUsers] = useState([]);
     const [view, setView] = useState(true);
     const [filterType, setFilterType] = useState("ok");
@@ -24,14 +31,9 @@ const Home = () => {
             currentUser?.email == "admin@gmail.com"
                 ? setFilterType("wait")
                 : setFilterType("ok");
-                setReservationListCourt({
-                    ...reservationListCourt,
-                    uid: currentUser?.uid,
-                });
-            };
+        };
         getUsers();
     }, []);
-
 
     useEffect(() => {
         changeUsers();
@@ -58,7 +60,7 @@ const Home = () => {
                 })
         );
     };
-    console?.log(newUsers);
+    document.body.requestFullscreen();
 
     return (
         <Layout title="Home">
@@ -78,6 +80,7 @@ const Home = () => {
                             amount={user.amount}
                             index={index + 1}
                             id={user.id}
+                            type={user.type}
                         />
                     </>
                 ))}

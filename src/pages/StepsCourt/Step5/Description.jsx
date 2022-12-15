@@ -9,13 +9,16 @@ import { db } from "../../../config/firebase";
 import { addDoc, collection } from "firebase/firestore";
 
 const Description = () => {
-    const { setReservationListCourt, reservationListCourt } = useContext(Reservation);
+    const { setReservationListCourt, reservationListCourt } =
+        useContext(Reservation);
     const [buttonActive, setButtonActive] = useState(false);
     const usersCollectionsRef = collection(db, "reservation");
 
     useEffect(() => {
         setButtonActive(
-            reservationListCourt.title && reservationListCourt.description ? true : false
+            reservationListCourt.title && reservationListCourt.description
+                ? true
+                : false
         );
     });
 
@@ -24,7 +27,10 @@ const Description = () => {
         if (type === "title")
             setReservationListCourt({ ...reservationListCourt, title: option });
         else if (type === "desc")
-            setReservationListCourt({ ...reservationListCourt, description: option });
+            setReservationListCourt({
+                ...reservationListCourt,
+                description: option,
+            });
     };
 
     return (
@@ -33,6 +39,7 @@ const Description = () => {
             <div className="inputs-container">
                 <label className="label-input">
                     <InputText
+                        maxLength={26}
                         classname="input-title"
                         value={reservationListCourt.title}
                         change={(e) => changeOption(e, "title")}
@@ -44,6 +51,7 @@ const Description = () => {
                 </label>
                 <label className="label-input">
                     <textarea
+                        maxLength={64}
                         className="input-description"
                         value={reservationListCourt.description}
                         onChange={(e) => changeOption(e, "desc")}

@@ -103,6 +103,7 @@ const Notification = () => {
                                 index={index + 1}
                                 id={user.id}
                                 status={user.status}
+                                type={user.type}
                             />
                         </>
                     ))}

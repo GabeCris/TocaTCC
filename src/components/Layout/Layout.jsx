@@ -43,7 +43,10 @@ const Layout = ({ children, title }) => {
             case "/register":
                 return (
                     <section className="appbar_finish">
-                        <img src="../assets/icons/logo-letters.svg" />
+                        <img
+                            src="../assets/icons/logo-letters.svg"
+                            onClick={() => changeFullScreen()}
+                        />
                     </section>
                 );
             default:

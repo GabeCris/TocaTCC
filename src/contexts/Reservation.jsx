@@ -14,17 +14,17 @@ const ContextProvider = ({ children }) => {
         amount: 10,
         participants: "students",
         responsible_type: "student",
-        description: "Jogo de fute da galerinha",
-        title: "Futebol de Info19",
-        date: "05/04",
+        description: "",
+        title: "",
+        date: "",
         initialHour: 7,
         initialMinute: 0,
         endHour: 8,
         endMinute: 0,
-        responsible: "Gabriel Crisanto",
+        responsible: "",
         amount_type: "students",
         status: "wait",
-        uid: ""
+        uid: "",
     });
 
     const [reservationListMaterial, setReservationListMaterial] = useState({
@@ -33,18 +33,57 @@ const ContextProvider = ({ children }) => {
         amount: 1,
         participants: "students",
         responsible_type: "student",
-        title: "Emprestimo de material",
-        description: "Preciso deste material para realização de atividade",
-        date: "05/04",
+        title: "",
+        description: "",
+        date: "",
         initialHour: 7,
         initialMinute: 0,
         endHour: 8,
         endMinute: 0,
-        responsible: "Gabriel Crisanto",
+        responsible: "",
         amount_type: "students",
         status: "wait",
-        uid: ""
+        uid: "",
     });
+
+    const clearArray = () => {
+        setReservationListCourt({
+            event: "soccer",
+            type: "court",
+            amount: 10,
+            participants: "students",
+            responsible_type: "student",
+            description: "",
+            title: "",
+            date: "",
+            initialHour: 7,
+            initialMinute: 0,
+            endHour: 8,
+            endMinute: 0,
+            responsible: "",
+            amount_type: "students",
+            status: "wait",
+            uid: "",
+        });
+        setReservationListMaterial({
+            event: "ball",
+            type: "material",
+            amount: 1,
+            participants: "students",
+            responsible_type: "student",
+            title: "",
+            description: "",
+            date: "",
+            initialHour: 7,
+            initialMinute: 0,
+            endHour: 8,
+            endMinute: 0,
+            responsible: "",
+            amount_type: "students",
+            status: "wait",
+            uid: "",
+        });
+    };
     return (
         <Reservation.Provider
             value={{
@@ -60,6 +99,7 @@ const ContextProvider = ({ children }) => {
                 setCurrentUser,
                 logado,
                 setLogado,
+                clearArray
             }}
         >
             {children}

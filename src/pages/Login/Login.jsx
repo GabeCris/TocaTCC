@@ -70,7 +70,7 @@ const Login = () => {
                         onChange={() => setErrorMessage("")}
                     >
                         <InputText
-                            type="email"
+                            type="text"
                             placeholder={"Informe seu email"}
                             change={(e) => setEmail(e.target.value)}
                             focus={() => setHide(true)}

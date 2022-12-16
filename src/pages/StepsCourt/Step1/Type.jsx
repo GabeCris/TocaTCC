@@ -17,7 +17,7 @@ const Type = () => {
         setReservationListMaterial,
         reservationListMaterial,
         setTypeReservation,
-        typeReservation,
+        typeReservation
     } = useContext(Reservation);
     const [selected, setSelected] = useState(typeReservation);
     const [inputNull, setInputNull] = useState(false);

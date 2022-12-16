@@ -14,7 +14,7 @@ const Finish = () => {
         reservationListCourt,
         reservationListMaterial,
         typeReservation,
-        currentUser,
+        clearArray,
     } = useContext(Reservation);
     const usersCollectionsRef = collection(db, "reservation");
     const [insertDB, setInsertDB] = useState();
@@ -36,6 +36,10 @@ const Finish = () => {
         return () => {};
     }, []);
 
+    useEffect(() => {
+        clearArray();
+    }, [insertDB]);
+    
     return (
         <section className="step-container step-container_finish">
             <h1 className="section-title">Pronto!</h1>

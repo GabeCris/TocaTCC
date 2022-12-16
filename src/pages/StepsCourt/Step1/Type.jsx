@@ -34,6 +34,17 @@ const Type = () => {
         setButtonActive(responsibleName ? true : false);
     });
 
+    useEffect(() => {
+        setReservationListCourt({
+            ...reservationListCourt,
+            uid: currentUser?.uid,
+        });
+        setReservationListMaterial({
+            ...reservationListMaterial,
+            uid: currentUser?.uid,
+        });
+    }, []);
+
     const changeResponsibleName = (e) => {
         const option = e.target.value;
         option === "" ? setInputNull(true) : setInputNull(false);

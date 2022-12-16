@@ -19,17 +19,8 @@ const Finish = () => {
     const usersCollectionsRef = collection(db, "reservation");
     const [insertDB, setInsertDB] = useState();
 
-
     useEffect(() => {
         (async () => {
-            setReservationListCourt({
-                ...reservationListCourt,
-                uid: currentUser?.uid,
-            });
-            setReservationListMaterial({
-                ...reservationListMaterial,
-                uid: currentUser?.uid,
-            });
             typeReservation === "court"
                 ? setInsertDB(
                       await addDoc(usersCollectionsRef, {

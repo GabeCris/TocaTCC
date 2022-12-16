@@ -75,8 +75,7 @@
     &:has(textarea:focus) {
         :not(.login_content) {
             ~.buttons-container,
-            .options-container,
-            .section-title {
+            .options-container{
                 display: none;
             }
         }

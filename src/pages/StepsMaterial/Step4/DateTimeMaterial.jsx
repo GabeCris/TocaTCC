@@ -47,16 +47,16 @@ const DateTime = () => {
         ) {
             setStatus(false);
         } else if (
-            reservationListMaterial.initialHour ==
+            reservationListMaterial.initialHour ===
                 reservationListMaterial.endHour &&
             reservationListMaterial.initialMinute >
                 reservationListMaterial.endMinute
         ) {
             setStatus(false);
         } else if (
-            reservationListMaterial.initialHour ==
+            reservationListMaterial.initialHour ===
                 reservationListMaterial.endHour &&
-            reservationListMaterial.initialMinute ==
+            reservationListMaterial.initialMinute ===
                 reservationListMaterial.endMinute
         ) {
             setStatus(false);
@@ -66,9 +66,9 @@ const DateTime = () => {
         ) {
             setStatus(false);
         } else if (
-            reservationListMaterial.initialHour + 2 ==
+            reservationListMaterial.initialHour + 2 ===
                 reservationListMaterial.endHour &&
-            reservationListMaterial.endMinute == 30
+            reservationListMaterial.endMinute === 30
         ) {
             setStatus(false);
         } else {

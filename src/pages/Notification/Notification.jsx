@@ -34,7 +34,7 @@ const Notification = () => {
     const changeUsers = () => {
         setNewUsers(
             users
-                ?.filter((user) => user?.uid == currentUser?.uid)
+                ?.filter((user) => user?.uid === currentUser?.uid)
                 ?.sort((a, b) => {
                     if (a.date < b.date) {
                         return -1;

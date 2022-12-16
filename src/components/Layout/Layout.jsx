@@ -52,7 +52,7 @@ const Layout = ({ children, title }) => {
                         <h1 className="title">{title}</h1>
                         <img
                             src={`../assets/icons/logo-${
-                                currentUser?.email == "admin@gmail.com"
+                                currentUser?.email === "admin@gmail.com"
                                     ? "admin"
                                     : "student"
                             }.svg`}

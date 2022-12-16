@@ -134,7 +134,7 @@ const Type = () => {
                     <Link
                         to={
                             buttonActive &&
-                            (typeReservation == "court"
+                            (typeReservation === "court"
                                 ? "/scheduling/court/step2"
                                 : "/scheduling/material/step2")
                         }

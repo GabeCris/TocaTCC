@@ -20,7 +20,7 @@ const CardEvent = ({
 
     return (
         <section className="card-container">
-            {status == "ok" && (
+            {status === "ok" && (
                 <span className="tag-personal tag-personal-green">
                     <img
                         src="../assets/events/details/accept-details.svg"
@@ -29,7 +29,7 @@ const CardEvent = ({
                     Aprovado
                 </span>
             )}
-            {status == "rejected" && (
+            {status === "rejected" && (
                 <span className="tag-personal tag-personal-red">
                     <img
                         src="../assets/events/details/close-details.svg"
@@ -38,7 +38,7 @@ const CardEvent = ({
                     Recusado
                 </span>
             )}
-            {status == "wait" && (
+            {status === "wait" && (
                 <span className="tag-personal tag-personal-yellow">
                     <img src="../assets/events/icons/time.svg" alt="" />
                     Aguardando
@@ -80,7 +80,7 @@ const CardEvent = ({
                                 </p>
                             </div>
                             <div className="card-nav_item">
-                                {type == "court" ? (
+                                {type === "court" ? (
                                     <img
                                         src="./assets/events/icons/people.svg"
                                         alt=""

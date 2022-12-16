@@ -30,7 +30,7 @@ const Details = () => {
 
     useEffect(() => {
         users.filter((sla) => sla.id === id).map((sla) => setData(sla));
-        setFilterType(currentUser?.email == "admin@gmail.com" ? "wait" : "ok");
+        setFilterType(currentUser?.email === "admin@gmail.com" ? "wait" : "ok");
     });
 
     return (

@@ -64,8 +64,8 @@ const Calendar = () => {
     const changeUsers = () => {
         setNewUsers(
             users
-                ?.filter((user) => user.status == "ok")
-                ?.filter((user) => user.date == dataFormatada)
+                ?.filter((user) => user.status === "ok")
+                ?.filter((user) => user.date === dataFormatada)
                 ?.sort((a, b) => {
                     if (a.initialHour < b.initialHour) {
                         return -1;
@@ -97,7 +97,7 @@ const Calendar = () => {
                     if (
                         itemDate?.find(
                             (x) =>
-                                x ==
+                                x ===
                                 date.getFullYear() +
                                     "-" +
                                     (date?.getMonth() + 1 < 10

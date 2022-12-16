@@ -41,13 +41,13 @@ const DateTime = () => {
         if (reservationListCourt.initialHour > reservationListCourt.endHour) {
             setStatus(false);
         } else if (
-            reservationListCourt.initialHour == reservationListCourt.endHour &&
+            reservationListCourt.initialHour === reservationListCourt.endHour &&
             reservationListCourt.initialMinute > reservationListCourt.endMinute
         ) {
             setStatus(false);
         } else if (
-            reservationListCourt.initialHour == reservationListCourt.endHour &&
-            reservationListCourt.initialMinute == reservationListCourt.endMinute
+            reservationListCourt.initialHour === reservationListCourt.endHour &&
+            reservationListCourt.initialMinute === reservationListCourt.endMinute
         ) {
             setStatus(false);
         } else if (
@@ -56,9 +56,9 @@ const DateTime = () => {
         ) {
             setStatus(false);
         } else if (
-            reservationListCourt.initialHour + 2 ==
+            reservationListCourt.initialHour + 2 ===
                 reservationListCourt.endHour &&
-            reservationListCourt.endMinute == 30
+            reservationListCourt.endMinute === 30
         ) {
             setStatus(false);
         } else {

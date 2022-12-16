@@ -15,43 +15,43 @@ const SelectInput = ({ list, label, type, id }) => {
     const changeTime = (item) => {
         setSelect(item);
         if (type === "material") {
-            id == 1 &&
+            id === 1 &&
                 setReservationListMaterial({
                     ...reservationListMaterial,
                     initialHour: item,
                 });
-            id == 2 &&
+            id === 2 &&
                 setReservationListMaterial({
                     ...reservationListMaterial,
                     initialMinute: item,
                 });
-            id == 3 &&
+            id === 3 &&
                 setReservationListMaterial({
                     ...reservationListMaterial,
                     endHour: item,
                 });
-            id == 4 &&
+            id === 4 &&
                 setReservationListMaterial({
                     ...reservationListMaterial,
                     endMinute: item,
                 });
         } else if (type === "court") {
-            id == 1 &&
+            id === 1 &&
                 setReservationListCourt({
                     ...reservationListCourt,
                     initialHour: item,
                 });
-            id == 2 &&
+            id === 2 &&
                 setReservationListCourt({
                     ...reservationListCourt,
                     initialMinute: item,
                 });
-            id == 3 &&
+            id === 3 &&
                 setReservationListCourt({
                     ...reservationListCourt,
                     endHour: item,
                 });
-            id == 4 &&
+            id === 4 &&
                 setReservationListCourt({
                     ...reservationListCourt,
                     endMinute: item,
@@ -73,7 +73,7 @@ const SelectInput = ({ list, label, type, id }) => {
                 <div className="select-wrapper">
                     {list.map((item) => (
                         <span
-                            className={select == item && "select-active"}
+                            className={select === item && "select-active"}
                             onClick={() => (
                                 changeTime(item), setOpenOptions(!openOptions)
                             )}

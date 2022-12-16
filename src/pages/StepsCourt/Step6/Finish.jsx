@@ -30,7 +30,7 @@ const Finish = () => {
                 ...reservationListMaterial,
                 uid: currentUser?.uid,
             });
-            typeReservation == "court"
+            typeReservation === "court"
                 ? setInsertDB(
                       await addDoc(usersCollectionsRef, {
                           ...reservationListCourt,

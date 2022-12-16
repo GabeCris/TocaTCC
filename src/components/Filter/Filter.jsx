@@ -37,11 +37,11 @@ const Filter = () => {
                         list.map((item) => (
                             <span
                                 className={
-                                    filterSelect == item.value &&
+                                    filterSelect === item.value &&
                                     "filter-active"
                                 }
                                 onClick={() => (
-                                    filterSelect == item.value
+                                    filterSelect === item.value
                                         ? setFilterSelect("")
                                         : setFilterSelect(item.value),
                                     setOpenOptions(!openOptions)

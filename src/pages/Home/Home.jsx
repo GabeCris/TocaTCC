@@ -28,7 +28,7 @@ const Home = () => {
             const data = await getDocs(usersCollectionsRef);
             setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
             setView(false);
-            currentUser?.email == "admin@gmail.com"
+            currentUser?.email === "admin@gmail.com"
                 ? setFilterType("wait")
                 : setFilterType("ok");
         };
@@ -44,7 +44,7 @@ const Home = () => {
             users
                 .filter((user) => new Date(user.date) - new Date() > 0)
                 .filter((user) => user.status === filterType)
-                .filter((user) => user.event == filterSelect || !filterSelect)
+                .filter((user) => user.event === filterSelect || !filterSelect)
                 .sort((a, b) => {
                     if (a.date < b.date) {
                         return -1;
